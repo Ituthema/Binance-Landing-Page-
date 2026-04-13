@@ -1,150 +1,1988 @@
-<html>
+<!DOCTYPE html>
+<html lang="en-ZA">
 <head>
-  <meta charset="utf-8">
-  <title>Binance Coin Landing Page</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Betting Guide SA — #1 Sports Betting, Slots & Casino Resource</title>
+<meta name="description" content="South Africa's #1 betting guide. Compare bookmakers, claim free bonuses, read expert slot reviews and get winning tips for Spina Zonke, sports betting, casino and lucky numbers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════
+   DESIGN TOKENS
+════════════════════════════════ */
+:root {
+  --navy:   #080f1e;
+  --navy-2: #0d1628;
+  --navy-3: #121f38;
+  --navy-4: #1a2a4a;
+  --border: #1e3060;
+  --border-l: #253a70;
+  --gold:   #c8952a;
+  --gold-l: #e8b84b;
+  --gold-pale: rgba(200,149,42,.12);
+  --red:    #d93545;
+  --green:  #1fad6e;
+  --blue:   #2a7fd4;
+  --text:   #dde4f0;
+  --muted:  #7a8fbb;
+  --dim:    #4a5f8a;
+  --white:  #fff;
+  --fh: 'Oswald', sans-serif;
+  --fb: 'Source Serif 4', Georgia, serif;
+  --r: 6px;
+  --rl: 12px;
+  --shadow: 0 6px 32px rgba(0,0,0,.55);
+  --sc: 0 2px 16px rgba(0,0,0,.4);
+  --g: clamp(14px, 4vw, 36px);
+  --max: 1180px;
+  --t: .2s ease;
+  --progress: 0%;
+}
+
+/* ════════════════════════════════
+   RESET & BASE
+════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy);
+  color: var(--text);
+  font-family: var(--fb);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+body.no-scroll { overflow: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--gold); text-decoration: none; transition: color var(--t); }
+a:hover { color: var(--gold-l); }
+button { cursor: pointer; font-family: inherit; }
+ul, ol { list-style: none; }
+
+/* ════════════════════════════════
+   LAYOUT
+════════════════════════════════ */
+.wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--g); }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.flex-b { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.sec { padding-block: 52px; }
+.sec-alt { background: var(--navy-2); }
+.sec-dark { background: var(--navy-3); }
+
+@media (max-width: 900px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  body { padding-bottom: 62px; }
+  .sec { padding-block: 36px; }
+}
+
+/* ════════════════════════════════
+   TYPOGRAPHY
+════════════════════════════════ */
+.eyebrow { font-family: var(--fh); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.sec-title { font-family: var(--fh); font-size: clamp(20px, 3.5vw, 30px); font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--text); }
+.sec-title span { color: var(--gold); }
+.sec-desc { color: var(--muted); font-size: 15px; margin-top: 10px; max-width: 600px; line-height: 1.7; }
+.page-hero-title { font-family: var(--fh); font-size: clamp(28px, 5vw, 52px); font-weight: 700; line-height: 1.05; letter-spacing: .5px; color: var(--white); }
+.page-hero-title em { color: var(--gold); font-style: normal; }
+
+/* Tags */
+.tag { display: inline-block; font-family: var(--fh); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+.tag-review { background: rgba(200,149,42,.15); color: var(--gold); }
+.tag-tip    { background: rgba(31,173,110,.15);  color: var(--green); }
+.tag-news   { background: rgba(217,53,69,.15);   color: var(--red); }
+.tag-hot    { background: var(--red);   color: #fff; }
+.tag-new    { background: var(--green); color: #fff; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--fh); font-size: 13px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; padding: 11px 22px; border-radius: var(--r); border: none; transition: all var(--t); cursor: pointer; white-space: nowrap; }
+.btn-gold    { background: var(--gold);     color: #000; }
+.btn-gold:hover { background: var(--gold-l); color: #000; }
+.btn-outline { background: transparent; color: var(--text); border: 1px solid var(--border-l); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-red     { background: var(--red);      color: #fff; }
+.btn-red:hover  { background: #f04050;      color: #fff; }
+.btn-sm  { padding: 8px 16px;  font-size: 11px; }
+.btn-lg  { padding: 14px 28px; font-size: 14px; }
+.btn-full { width: 100%; justify-content: center; }
+
+/* ════════════════════════════════
+   READING PROGRESS
+════════════════════════════════ */
+#rp {
+  position: fixed; top: 0; left: 0; z-index: 10000;
+  width: var(--progress); /* driven by CSS variable — avoids forced reflow */
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-l));
+  transition: width .1s linear;
+}
+
+/* ════════════════════════════════
+   AGE BANNER
+════════════════════════════════ */
+#age-bar {
+  background: var(--red); padding: 7px var(--g); text-align: center;
+  font-family: var(--fh); font-size: 11px; letter-spacing: .5px; text-transform: uppercase; color: #fff;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+}
+#age-bar button { background: transparent; border: 1px solid rgba(255,255,255,.5); color: #fff; font-size: 10px; font-family: var(--fh); padding: 3px 10px; border-radius: 2px; letter-spacing: .5px; text-transform: uppercase; }
+
+/* ════════════════════════════════
+   TICKER
+════════════════════════════════ */
+.ticker { background: var(--navy-2); border-bottom: 1px solid var(--border); overflow: hidden; padding-block: 8px; }
+.ticker-track { display: flex; align-items: center; width: max-content; animation: tick 30s linear infinite; }
+.ticker-track:hover { animation-play-state: paused; }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ti { display: flex; align-items: center; padding-inline: 28px; border-right: 1px solid var(--border); }
+.ti img { height: 36px; width: auto; max-width: 110px; object-fit: contain; filter: brightness(.8); transition: filter var(--t), transform var(--t); }
+.ti:hover img { filter: brightness(1); transform: scale(1.07); }
+.ti-text { font-family: var(--fh); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+
+/* ════════════════════════════════
+   HEADER / NAV
+════════════════════════════════ */
+.site-header {
+  position: sticky; top: 0; z-index: 900;
+  background: rgba(8,15,30,.97); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border); transition: box-shadow var(--t);
+}
+.site-header.stuck { box-shadow: 0 4px 24px rgba(0,0,0,.6); }
+.h-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 14px; padding-inline: var(--g); }
+.logo { font-family: var(--fh); font-size: 20px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--white); }
+.logo span { color: var(--gold); }
+.logo sub { font-size: 10px; color: var(--dim); margin-left: 4px; vertical-align: middle; }
+
+/* Desktop nav */
+.h-nav { display: flex; align-items: center; gap: 2px; }
+.h-nav-item { position: relative; }
+.h-nav-link {
+  font-family: var(--fh); font-size: 11.5px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
+  color: var(--muted); padding: 0 10px; height: 60px; display: flex; align-items: center; gap: 4px;
+  background: none; border: none; border-bottom: 2px solid transparent;
+  cursor: pointer; white-space: nowrap;
+  transition: color var(--t), background var(--t), border-color var(--t);
+}
+.h-nav-link:hover, .h-nav-link.active {
+  color: var(--gold); background: var(--gold-pale); border-bottom-color: var(--gold);
+}
+.h-nav-link .arrow { font-size: 9px; color: var(--dim); transition: transform .2s; }
+.h-nav-item:is(:hover, .open) .arrow { transform: rotate(180deg); }
+
+/* Dropdown */
+.dropdown {
+  position: absolute; top: 100%; left: 0; min-width: 230px; z-index: 1050;
+  background: var(--navy-3); border: 1px solid var(--border-l);
+  border-radius: 0 0 var(--rl) var(--rl); box-shadow: 0 12px 40px rgba(0,0,0,.55);
+  padding: 6px 0;
+  opacity: 0; transform: translateY(-6px); pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+  max-height: 480px; overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: var(--border-l) transparent;
+}
+.dropdown::-webkit-scrollbar { width: 4px; }
+.dropdown::-webkit-scrollbar-thumb { background: var(--border-l); border-radius: 2px; }
+.h-nav-item:is(:hover, .open) .dropdown { opacity: 1; transform: translateY(0); pointer-events: all; }
+.dd-header { font-family: var(--fh); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--dim); padding: 8px 18px 4px; }
+.dd-item {
+  display: block; font-family: var(--fh); font-size: 12px; font-weight: 500; letter-spacing: .3px;
+  text-transform: uppercase; color: var(--muted); padding: 9px 18px;
+  border-bottom: 1px solid rgba(30,48,96,.4); white-space: normal; line-height: 1.4;
+  transition: color var(--t), background var(--t), padding-left var(--t);
+}
+.dd-item:last-child { border-bottom: none; }
+.dd-item:hover { background: var(--gold-pale); color: var(--gold); padding-left: 24px; }
+.dd-divider { border-top: 1px solid var(--border); margin: 4px 0; }
+
+/* Nav right actions */
+.h-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.icon-btn { background: none; border: none; color: var(--muted); padding: 8px; border-radius: var(--r); display: flex; align-items: center; transition: color var(--t), background var(--t); }
+.icon-btn:hover { color: var(--gold); background: var(--gold-pale); }
+.nb-cta { font-family: var(--fh); font-size: 11px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; background: var(--gold); color: #000; padding: 8px 16px; border-radius: var(--r); white-space: nowrap; transition: background var(--t); }
+.nb-cta:hover { background: var(--gold-l); color: #000; }
+
+/* Hamburger */
+.ham { background: none; border: none; display: flex; flex-direction: column; gap: 5px; padding: 4px; border-radius: var(--r); }
+.ham span { display: block; width: 22px; height: 2px; background: var(--muted); border-radius: 2px; transition: transform .25s ease, opacity .25s ease, background .25s ease; }
+.ham.on span { background: var(--gold); }
+.ham.on span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.ham.on span:nth-child(2) { opacity: 0; }
+.ham.on span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 1024px) { .h-nav { display: none; } .nb-cta { display: none; } }
+
+/* ════════════════════════════════
+   SEARCH OVERLAY
+════════════════════════════════ */
+.s-overlay {
+  position: fixed; inset: 0; z-index: 1100; background: rgba(4,8,18,.97);
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  padding-top: 100px; opacity: 0; pointer-events: none; transition: opacity .3s ease;
+}
+.s-overlay.on { opacity: 1; pointer-events: all; }
+.s-inner { width: min(640px, 90vw); }
+.s-label { font-family: var(--fh); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; display: block; }
+.s-input { width: 100%; background: var(--navy-3); border: 2px solid var(--border-l); border-radius: var(--r); color: var(--text); font-family: var(--fb); font-size: 18px; padding: 14px 18px; outline: none; transition: border-color var(--t); }
+.s-input:focus { border-color: var(--gold); }
+.s-chips { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.s-chip { font-family: var(--fh); font-size: 11px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border-l); color: var(--muted); background: transparent; cursor: pointer; transition: all var(--t); }
+.s-chip:hover { border-color: var(--gold); color: var(--gold); }
+.s-close { position: absolute; top: 24px; right: var(--g); background: none; border: none; color: var(--muted); font-size: 24px; padding: 6px; transition: color var(--t); }
+.s-close:hover { color: var(--gold); }
+
+/* ════════════════════════════════
+   PAGE TRANSITION
+════════════════════════════════ */
+#page-content { animation: pageIn .35s ease both; }
+@keyframes pageIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+.hero { position: relative; overflow: hidden; min-height: 460px; display: flex; align-items: flex-end; }
+.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(8,15,30,.97) 0%, rgba(8,15,30,.82) 55%, rgba(8,15,30,.25) 100%); }
+.hero-content { position: relative; z-index: 1; padding: 56px var(--g); max-width: 700px; }
+.hero-meta { display: flex; align-items: center; gap: 16px; margin-top: 18px; font-family: var(--fh); font-size: 11px; letter-spacing: .5px; text-transform: uppercase; color: var(--dim); flex-wrap: wrap; }
+.hero-excerpt { font-size: 16px; color: rgba(221,228,240,.8); margin-bottom: 26px; max-width: 520px; line-height: 1.7; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Page inner hero */
+.page-hero { background: var(--navy-3); border-bottom: 1px solid var(--border); padding-block: 40px 36px; }
+.page-hero .wrap { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.breadcrumb { font-family: var(--fh); font-size: 11px; letter-spacing: .5px; text-transform: uppercase; color: var(--dim); margin-bottom: 12px; }
+.breadcrumb a { color: var(--dim); }
+.breadcrumb a:hover { color: var(--gold); }
+.breadcrumb span { margin-inline: 6px; }
+
+/* ════════════════════════════════
+   TRUST BAR
+════════════════════════════════ */
+.trust-bar { background: var(--navy-3); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding-block: 10px; }
+.trust-track { display: flex; align-items: center; justify-content: center; gap: clamp(14px, 3vw, 44px); flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 7px; font-family: var(--fh); font-size: 11px; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.trust-div { width: 1px; height: 18px; background: var(--border); }
+
+/* ════════════════════════════════
+   OFFER CARDS
+════════════════════════════════ */
+.offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 24px; }
+.offer-card { background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--rl); padding: 20px; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; transition: border-color var(--t), transform var(--t), box-shadow var(--t); }
+.offer-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-l)); }
+.offer-card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: var(--sc); }
+.offer-card.featured { border-color: rgba(217,53,69,.35); }
+.offer-card.featured::before { background: linear-gradient(90deg, var(--red), #ff6b6b); }
+.offer-badge { position: absolute; top: 14px; right: 14px; background: var(--red); color: #fff; font-family: var(--fh); font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; }
+.offer-logo-wrap { height: 36px; display: flex; align-items: center; }
+.offer-logo { height: 32px; width: auto; max-width: 110px; object-fit: contain; }
+.offer-logo-text { font-family: var(--fh); font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text); }
+.offer-amount { font-family: var(--fh); font-size: clamp(22px, 3vw, 28px); font-weight: 700; color: var(--gold); line-height: 1; }
+.offer-sub { font-size: 11px; color: var(--muted); font-family: var(--fh); letter-spacing: .3px; text-transform: uppercase; margin-top: -4px; }
+.offer-desc { font-size: 13px; color: var(--muted); line-height: 1.55; flex: 1; }
+.offer-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid var(--border); margin-top: auto; }
+.offer-stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; }
+.offer-score { font-family: var(--fh); font-size: 11px; color: var(--muted); margin-top: 2px; }
+.claim-btn { font-family: var(--fh); font-size: 11px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; background: var(--gold); color: #000; padding: 8px 16px; border-radius: var(--r); transition: background var(--t); }
+.claim-btn:hover { background: var(--gold-l); color: #000; }
+.offer-tc { font-size: 10px; color: var(--dim); text-align: center; }
+
+/* ════════════════════════════════
+   COMPARISON TABLE
+════════════════════════════════ */
+.cmp-wrap { margin-top: 28px; overflow-x: auto; border-radius: var(--rl); border: 1px solid var(--border); }
+.cmp { width: 100%; border-collapse: collapse; min-width: 680px; font-size: 13px; }
+.cmp thead { background: var(--navy-4); }
+.cmp th { font-family: var(--fh); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.cmp tbody tr { border-bottom: 1px solid var(--border); transition: background var(--t); }
+.cmp tbody tr:last-child { border-bottom: none; }
+.cmp tbody tr:hover { background: var(--navy-3); }
+.cmp tbody tr.top { background: rgba(200,149,42,.06); }
+.cmp td { padding: 15px 14px; vertical-align: middle; }
+.cmp-logo img { height: 26px; width: auto; max-width: 95px; object-fit: contain; }
+.cmp-logo-text { font-family: var(--fh); font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--text); }
+.cmp-bonus { font-family: var(--fh); font-size: 16px; font-weight: 700; color: var(--gold); }
+.cmp-sub { font-size: 10px; color: var(--muted); font-family: var(--fh); text-transform: uppercase; letter-spacing: .3px; margin-top: 2px; }
+.cmp-stars { color: var(--gold); letter-spacing: 1px; font-size: 12px; }
+.cmp-rating { font-size: 10px; color: var(--muted); margin-top: 2px; font-family: var(--fh); }
+.badge { display: inline-block; font-family: var(--fh); font-size: 9px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; padding: 3px 7px; border-radius: 2px; background: var(--green); color: #fff; }
+.badge.no { background: var(--border); color: var(--dim); }
+.top-badge { font-family: var(--fh); font-size: 9px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; background: var(--red); color: #fff; padding: 3px 7px; border-radius: 2px; margin-left: 6px; }
+.cmp-tc { margin-top: 12px; font-size: 11px; color: var(--dim); text-align: center; }
+
+/* ════════════════════════════════
+   POST CARDS
+════════════════════════════════ */
+.posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 860px) { .posts-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .posts-grid { grid-template-columns: 1fr; } }
+.pc { background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; transition: transform var(--t), box-shadow var(--t), border-color var(--t); display: flex; flex-direction: column; }
+.pc:hover { transform: translateY(-4px); box-shadow: var(--sc); border-color: var(--border-l); }
+.pc-img { position: relative; padding-top: 58%; overflow: hidden; background: var(--navy-4); }
+.pc-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform .5s ease; }
+.pc:hover .pc-bg { transform: scale(1.07); }
+.pc-ov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,15,30,.65) 0%, transparent 60%); }
+.pc-tag { position: absolute; top: 11px; left: 11px; }
+.pc-body { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.pc-title { font-family: var(--fh); font-size: 14px; font-weight: 600; line-height: 1.35; color: var(--text); transition: color var(--t); display: block; }
+.pc-title:hover { color: var(--gold); }
+.pc-meta { font-size: 11px; color: var(--dim); font-family: var(--fh); letter-spacing: .3px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; margin-top: auto; }
+.pc-excerpt { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+/* ════════════════════════════════
+   SIDEBAR
+════════════════════════════════ */
+.with-sidebar { display: grid; grid-template-columns: 1fr 290px; gap: 32px; align-items: start; }
+@media (max-width: 1000px) { .with-sidebar { grid-template-columns: 1fr; } }
+.sidebar { display: flex; flex-direction: column; gap: 22px; }
+.widget { background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; }
+.w-head { background: var(--navy-4); padding: 13px 18px; border-bottom: 1px solid var(--border); }
+.w-title { font-family: var(--fh); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text); }
+.w-body { padding: 15px 18px; }
+.w-link-list { display: flex; flex-direction: column; }
+.w-link { display: block; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13px; color: var(--muted); transition: color var(--t), padding-left var(--t); }
+.w-link:last-child { border-bottom: none; }
+.w-link:hover { color: var(--gold); padding-left: 4px; }
+.bw-item { display: flex; align-items: center; gap: 11px; padding-block: 11px; border-bottom: 1px solid var(--border); }
+.bw-item:last-child { border-bottom: none; }
+.bw-logo { width: 68px; height: 28px; object-fit: contain; background: rgba(255,255,255,.05); border-radius: 4px; padding: 3px; flex-shrink: 0; }
+.bw-logo-text { font-family: var(--fh); font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--text); width: 68px; flex-shrink: 0; }
+.bw-info { flex: 1; min-width: 0; }
+.bw-name { font-family: var(--fh); font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--text); }
+.bw-bonus { font-size: 11px; color: var(--gold); }
+.bw-btn { font-family: var(--fh); font-size: 10px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; background: var(--gold); color: #000; padding: 6px 10px; border-radius: 4px; white-space: nowrap; flex-shrink: 0; transition: background var(--t); }
+.bw-btn:hover { background: var(--gold-l); color: #000; }
+
+/* ════════════════════════════════
+   PROMO CARDS
+════════════════════════════════ */
+.promo-scroll { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.promo-scroll::-webkit-scrollbar { display: none; }
+.promo-card { background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--rl); padding: 18px; min-width: 270px; flex-shrink: 0; scroll-snap-align: start; position: relative; overflow: hidden; transition: transform var(--t), border-color var(--t); }
+.promo-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold); }
+.promo-card:hover { transform: translateY(-3px); border-color: var(--gold); }
+.promo-book { font-family: var(--fh); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+.promo-amount { font-family: var(--fh); font-size: 28px; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 5px; }
+.promo-name { font-family: var(--fh); font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 7px; }
+.promo-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 14px; }
+.promo-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 12px; }
+.promo-expiry { font-family: var(--fh); font-size: 10px; letter-spacing: .5px; text-transform: uppercase; color: var(--dim); }
+.promo-expiry strong { color: var(--red); }
+
+/* ════════════════════════════════
+   NEWSLETTER
+════════════════════════════════ */
+.nl-section { padding-block: 56px; background: linear-gradient(135deg, var(--navy-3), var(--navy-4)); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.nl-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+@media (max-width: 760px) { .nl-inner { grid-template-columns: 1fr; } }
+.nl-heading { font-family: var(--fh); font-size: clamp(22px, 3.5vw, 36px); font-weight: 700; line-height: 1.1; color: var(--white); margin-bottom: 12px; }
+.nl-heading em { color: var(--gold); font-style: normal; }
+.nl-sub { font-size: 15px; color: var(--muted); }
+.nl-perks { margin-top: 18px; display: flex; flex-direction: column; gap: 7px; }
+.nl-perk { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
+.nl-perk-icon { width: 22px; height: 22px; background: var(--gold-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+.nl-field { width: 100%; background: var(--navy-2); border: 1px solid var(--border-l); border-radius: var(--r); color: var(--text); font-family: var(--fb); font-size: 15px; padding: 13px 16px; outline: none; margin-bottom: 10px; transition: border-color var(--t); }
+.nl-field:focus { border-color: var(--gold); }
+.nl-note { font-size: 11px; color: var(--dim); text-align: center; margin-top: 4px; }
+
+/* ════════════════════════════════
+   PAGINATION
+════════════════════════════════ */
+.pagination { margin-top: 36px; display: flex; justify-content: center; align-items: center; gap: 5px; flex-wrap: wrap; }
+.pgbtn { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; padding-inline: 10px; border-radius: var(--r); border: 1px solid var(--border); background: var(--navy-3); color: var(--muted); font-family: var(--fh); font-size: 12px; font-weight: 600; transition: all var(--t); }
+.pgbtn:hover, .pgbtn.active { background: var(--gold); border-color: var(--gold); color: #000; }
+
+/* ════════════════════════════════
+   SUBNAV
+════════════════════════════════ */
+.subnav { background: var(--navy-3); border-top: 1px solid var(--border); padding-block: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.subnav::-webkit-scrollbar { display: none; }
+.subnav-track { display: flex; align-items: center; gap: 3px; padding-inline: var(--g); width: max-content; }
+.sn-link { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 7px 14px; border-radius: var(--rl); color: var(--dim); font-family: var(--fh); font-size: 10px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; white-space: nowrap; transition: all var(--t); }
+.sn-link:hover { background: var(--gold-pale); color: var(--gold); }
+.sn-link span { font-size: 20px; }
+
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+.footer-top { background: var(--navy-4); border-top: 1px solid var(--border); padding-block: 40px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 30px; }
+@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; } }
+.fc-logo { font-family: var(--fh); font-size: 18px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: 12px; }
+.fc-logo span { color: var(--gold); }
+.fc-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.fc-title { font-family: var(--fh); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 13px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.fc-links { display: flex; flex-direction: column; gap: 7px; }
+.fc-links a { font-size: 13px; color: var(--muted); transition: color var(--t), padding-left var(--t); }
+.fc-links a:hover { color: var(--gold); padding-left: 4px; }
+.footer-rg { background: var(--navy-2); border-top: 1px solid var(--border); padding-block: 18px; }
+.footer-rg .wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.rg-text { font-size: 12px; color: var(--dim); line-height: 1.6; }
+.rg-text a { color: var(--dim); text-decoration: underline; }
+.rg-badges { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.rg-badge { background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--r); padding: 5px 11px; font-family: var(--fh); font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--dim); }
+.footer-copy { background: var(--navy); border-top: 1px solid var(--border); padding-block: 13px; text-align: center; font-size: 11px; color: var(--dim); font-family: var(--fh); letter-spacing: .3px; }
+.footer-copy a { color: var(--dim); margin-inline: 6px; }
+.footer-copy a:hover { color: var(--gold); }
+.back-top { background: none; border: none; color: var(--dim); font-family: var(--fh); font-size: 11px; letter-spacing: .5px; text-transform: uppercase; cursor: pointer; transition: color var(--t); display: flex; align-items: center; gap: 5px; }
+.back-top:hover { color: var(--gold); }
+
+/* ════════════════════════════════
+   MOBILE CTA
+════════════════════════════════ */
+.mob-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 800; background: var(--navy-4); border-top: 1px solid var(--border); padding: 10px 16px; align-items: center; gap: 10px; }
+@media (max-width: 768px) { .mob-cta { display: flex; } }
+.mob-cta-info { flex: 1; min-width: 0; }
+.mob-cta-label { font-family: var(--fh); font-size: 10px; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); }
+.mob-cta-amount { font-family: var(--fh); font-size: 15px; font-weight: 700; color: var(--gold); line-height: 1; }
+.mob-cta-x { background: none; border: none; color: var(--dim); font-size: 18px; flex-shrink: 0; }
+
+/* ════════════════════════════════
+   COOKIE CONSENT
+════════════════════════════════ */
+.cookie {
+  position: fixed; bottom: 60px; left: 16px; right: 16px; z-index: 850;
+  background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--rl);
+  padding: 16px 18px; box-shadow: var(--shadow);
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  transform: translateY(20px); opacity: 0;
+  transition: transform .4s ease, opacity .4s ease;
+  pointer-events: none; max-width: 660px; margin-inline: auto;
+}
+.cookie.show { transform: translateY(0); opacity: 1; pointer-events: all; }
+.cookie-text { flex: 1; min-width: 180px; font-size: 12px; color: var(--muted); line-height: 1.6; }
+.cookie-actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+/* ════════════════════════════════
+   OFF-CANVAS
+════════════════════════════════ */
+.backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.72); z-index: 990; opacity: 0; pointer-events: none; transition: opacity .3s ease; }
+.backdrop.on { opacity: 1; pointer-events: all; }
+.offcanvas { position: fixed; top: 0; right: 0; bottom: 0; width: min(340px, 92vw); background: var(--navy-3); border-left: 1px solid var(--border); z-index: 991; transform: translateX(105%); transition: transform .3s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; overflow: hidden; }
+.offcanvas.on { transform: translateX(0); }
+.oc-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.oc-close { background: none; border: none; color: var(--muted); font-size: 20px; padding: 4px; transition: color var(--t); }
+.oc-close:hover { color: var(--gold); }
+.oc-search { padding: 11px 16px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.oc-search-row { display: flex; gap: 7px; }
+.oc-search-input { flex: 1; background: var(--navy-2); border: 1px solid var(--border-l); border-radius: var(--r); color: var(--text); font-size: 13px; padding: 9px 11px; outline: none; transition: border-color var(--t); }
+.oc-search-input:focus { border-color: var(--gold); }
+.oc-body { overflow-y: auto; flex: 1; }
+.oc-item { border-bottom: 1px solid var(--border); }
+.oc-link { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; font-family: var(--fh); font-size: 12px; font-weight: 600; letter-spacing: .3px; text-transform: uppercase; color: var(--text); width: 100%; background: none; border: none; text-align: left; cursor: pointer; transition: color var(--t), background var(--t); }
+.oc-link:hover, .oc-link.active { color: var(--gold); background: var(--gold-pale); }
+.oc-arr { font-size: 11px; color: var(--dim); transition: transform .2s ease; }
+.oc-item.open .oc-arr { transform: rotate(90deg); }
+.oc-sub { display: none; background: var(--navy-2); }
+.oc-item.open .oc-sub { display: block; }
+.oc-sub-link { display: block; padding: 9px 20px 9px 30px; font-size: 13px; color: var(--muted); transition: color var(--t), padding-left var(--t); }
+.oc-sub-link:hover { color: var(--gold); padding-left: 34px; }
+.oc-foot { padding: 15px 20px; border-top: 1px solid var(--border); flex-shrink: 0; }
+.oc-foot-note { font-size: 11px; color: var(--dim); text-align: center; line-height: 1.6; margin-bottom: 11px; }
+
+/* ════════════════════════════════
+   PAGE-SPECIFIC
+════════════════════════════════ */
+/* Review card */
+.review-card { background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; transition: transform var(--t), border-color var(--t), box-shadow var(--t); }
+.review-card:hover { transform: translateY(-4px); border-color: var(--border-l); box-shadow: var(--sc); }
+.review-card-top { background: var(--navy-4); padding: 20px; display: flex; align-items: center; gap: 14px; border-bottom: 1px solid var(--border); }
+.rc-logo { height: 36px; width: auto; max-width: 110px; object-fit: contain; }
+.rc-logo-text { font-family: var(--fh); font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text); }
+.rc-meta { margin-left: auto; text-align: right; }
+.rc-score { font-family: var(--fh); font-size: 26px; font-weight: 700; color: var(--gold); line-height: 1; }
+.rc-stars { color: var(--gold); letter-spacing: 1px; font-size: 13px; }
+.review-card-body { padding: 18px 20px; }
+.rc-bonus { font-family: var(--fh); font-size: 18px; font-weight: 700; color: var(--gold); margin-bottom: 5px; }
+.rc-bonus-label { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.rc-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.rc-col-title { font-family: var(--fh); font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+.rc-pro, .rc-con { display: flex; align-items: flex-start; gap: 6px; font-size: 12px; color: var(--muted); margin-bottom: 5px; line-height: 1.4; }
+.rc-pro::before { content: '✓'; color: var(--green); flex-shrink: 0; font-weight: 700; }
+.rc-con::before { content: '✗'; color: var(--red);   flex-shrink: 0; font-weight: 700; }
+.rc-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 14px; flex-wrap: wrap; gap: 10px; }
+.rc-dep { font-size: 12px; color: var(--muted); font-family: var(--fh); text-transform: uppercase; letter-spacing: .3px; }
+.rc-dep strong { color: var(--text); }
+
+/* App card */
+.app-card { background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--rl); padding: 20px; display: flex; flex-direction: column; gap: 12px; transition: transform var(--t), border-color var(--t); }
+.app-card:hover { transform: translateY(-3px); border-color: var(--border-l); }
+.app-header { display: flex; align-items: center; gap: 14px; }
+.app-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--navy-4); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; border: 1px solid var(--border); }
+.app-info .app-name { font-family: var(--fh); font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text); }
+.app-info .app-developer { font-size: 12px; color: var(--muted); }
+.app-rating { display: flex; align-items: center; gap: 8px; }
+.app-stars { color: var(--gold); font-size: 13px; }
+.app-score { font-family: var(--fh); font-size: 12px; color: var(--muted); }
+.app-features { display: flex; flex-wrap: wrap; gap: 6px; }
+.app-feat { background: var(--navy-4); border: 1px solid var(--border); border-radius: 3px; font-family: var(--fh); font-size: 9px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); padding: 3px 8px; }
+.app-platforms { display: flex; gap: 8px; }
+.app-plat { font-family: var(--fh); font-size: 10px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; padding: 5px 10px; border-radius: 4px; border: 1px solid var(--border); color: var(--muted); }
+.app-plat.android { border-color: var(--green); color: var(--green); }
+.app-plat.ios     { border-color: var(--blue);  color: var(--blue); }
+
+/* Draw card */
+.draw-card { background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--rl); padding: 20px; transition: transform var(--t), border-color var(--t); }
+.draw-card:hover { transform: translateY(-3px); border-color: var(--border-l); }
+.draw-name { font-family: var(--fh); font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text); margin-bottom: 6px; }
+.draw-time { font-size: 12px; color: var(--muted); font-family: var(--fh); text-transform: uppercase; letter-spacing: .3px; margin-bottom: 12px; }
+.draw-balls { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+.ball { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-l)); display: flex; align-items: center; justify-content: center; font-family: var(--fh); font-size: 14px; font-weight: 700; color: #000; }
+.ball.bonus { background: linear-gradient(135deg, var(--red), #f06070); color: #fff; }
+.draw-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+/* Sport card */
+.sport-card { background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--rl); overflow: hidden; transition: transform var(--t), border-color var(--t), box-shadow var(--t); cursor: pointer; }
+.sport-card:hover { transform: translateY(-4px); border-color: var(--border-l); box-shadow: var(--sc); }
+.sport-card-img { height: 140px; background-size: cover; background-position: center; position: relative; }
+.sport-card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(8,15,30,.8), transparent 60%); }
+.sport-card-emoji { position: absolute; bottom: 12px; left: 16px; font-size: 32px; z-index: 1; }
+.sport-card-body { padding: 16px; }
+.sport-card-title { font-family: var(--fh); font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text); margin-bottom: 8px; }
+.sport-card-desc { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 14px; }
+
+/* FAQ */
+.faq-item { border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 8px; }
+.faq-q { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; font-family: var(--fh); font-size: 13px; font-weight: 600; letter-spacing: .3px; text-transform: uppercase; color: var(--text); cursor: pointer; background: var(--navy-3); border: none; width: 100%; text-align: left; transition: background var(--t); }
+.faq-q:hover { background: var(--navy-4); }
+.faq-q[aria-expanded="true"] { color: var(--gold); }
+.faq-arr { font-size: 12px; color: var(--muted); transition: transform .25s ease; flex-shrink: 0; }
+.faq-q[aria-expanded="true"] .faq-arr { transform: rotate(90deg); }
+.faq-a { display: none; padding: 14px 18px; font-size: 14px; color: var(--muted); line-height: 1.7; background: var(--navy-2); border-top: 1px solid var(--border); }
+.faq-a.open { display: block; }
+
+/* Info box */
+.info-box { background: var(--gold-pale); border: 1px solid rgba(200,149,42,.3); border-radius: var(--r); padding: 16px 20px; margin-block: 20px; }
+.info-box p { font-size: 14px; color: var(--text); line-height: 1.7; }
+.info-box strong { color: var(--gold); }
+
+/* Steps */
+.steps { display: flex; flex-direction: column; gap: 14px; counter-reset: step; }
+.step { display: flex; gap: 14px; align-items: flex-start; counter-increment: step; }
+.step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--gold); color: #000; display: flex; align-items: center; justify-content: center; font-family: var(--fh); font-size: 14px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.step-num::after { content: counter(step); }
+.step-content h4 { font-family: var(--fh); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .3px; color: var(--text); margin-bottom: 4px; }
+.step-content p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* About page */
+.team-card { background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--rl); padding: 24px; text-align: center; }
+.team-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-pale), var(--navy-4)); border: 2px solid var(--gold); margin-inline: auto; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; }
+.team-name { font-family: var(--fh); font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text); margin-bottom: 4px; }
+.team-role { font-size: 12px; color: var(--gold); font-family: var(--fh); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 10px; }
+.team-bio { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* Article body */
+.article-body { max-width: 720px; }
+.article-body h2 { font-family: var(--fh); font-size: 22px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text); margin-top: 32px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+.article-body h3 { font-family: var(--fh); font-size: 17px; font-weight: 600; color: var(--text); margin-top: 22px; margin-bottom: 10px; }
+.article-body p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+.article-body ul { margin-bottom: 14px; padding-left: 0; }
+.article-body ul li { font-size: 15px; color: var(--muted); line-height: 1.7; padding: 4px 0 4px 22px; position: relative; }
+.article-body ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 12px; top: 6px; }
+.article-body .highlight { background: var(--gold-pale); border-left: 3px solid var(--gold); padding: 14px 18px; border-radius: 0 var(--r) var(--r) 0; margin-block: 20px; }
+.article-body .highlight p { font-size: 14px; color: var(--text); margin: 0; }
+
+/* Quicklinks */
+.qlink-strip { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; border-bottom: 1px solid var(--border); background: var(--navy); }
+.qlink-strip::-webkit-scrollbar { display: none; }
+.qlink-track { display: flex; align-items: center; gap: 8px; padding: 14px var(--g); width: max-content; }
+.qchip { font-family: var(--fh); font-size: 11px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); background: var(--navy-3); border: 1px solid var(--border); border-radius: 20px; padding: 8px 16px; white-space: nowrap; cursor: pointer; transition: all var(--t); }
+.qchip:hover, .qchip.active { background: var(--gold-pale); border-color: var(--gold); color: var(--gold); }
+
+/* Filter tabs */
+.ftabs { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.ftab { font-family: var(--fh); font-size: 11px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; padding: 7px 13px; border-radius: var(--r); border: 1px solid var(--border); background: transparent; color: var(--muted); transition: all var(--t); }
+.ftab:hover { border-color: var(--border-l); color: var(--text); }
+.ftab.active { background: var(--gold); border-color: var(--gold); color: #000; }
+
+/* Stat card */
+.stat-card { background: var(--navy-3); border: 1px solid var(--border); border-radius: var(--rl); padding: 22px; text-align: center; }
+.stat-num { font-family: var(--fh); font-size: 36px; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+.stat-label { font-family: var(--fh); font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+
+/* Scroll-reveal animation */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.fade-up { animation: fadeUp .5s ease both; }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s ease, transform .5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
 </head>
+
 <body>
-  <header id="header">
-    <img id="header-img" src="https://cdn.corporatefinanceinstitute.com/assets/binance-coin-bnb-768x512.jpeg" alt="Binance Coin Logo">
-    <nav id="nav-bar">
-      <a class="nav-link" href="#features">Features</a>
-      <a class="nav-link" href="#how-it-works">How It Works</a>
-      <a class="nav-link" href="#get-started">Get Started</a>
+
+<!-- READING PROGRESS -->
+<div id="rp" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100"></div>
+
+<!-- AGE BANNER -->
+<div id="age-bar" role="alert" aria-live="polite">
+  <span>⚠ 18+ Only — Please gamble responsibly. Winners know when to stop.</span>
+  <button id="age-close" aria-label="Close age banner">✕</button>
+</div>
+
+<!-- SPONSOR TICKER — duplicates injected by JS, not hand-coded -->
+<nav class="ticker" aria-label="Betting partners">
+  <div class="ticker-track" id="ticker-track">
+    <a class="ti" href="https://bit.ly/betwaygmbcode" target="_blank" rel="noopener sponsored"><img src="https://www.bettingguide.co.za/wp-content/uploads/2021/06/Betway-300x181-2.png" alt="Betway" width="110" height="36" loading="eager"></a>
+    <a class="ti" href="https://bit.ly/hollyfree50gmb" target="_blank" rel="noopener sponsored"><img src="https://www.bettingguide.co.za/wp-content/uploads/2022/02/Hollywoodbets-new-logo-2022-1.png" alt="Hollywoodbets" width="110" height="36" loading="eager"></a>
+    <a class="ti" href="https://bit.ly/EasybetZA" target="_blank" rel="noopener sponsored"><img src="https://www.bettingguide.co.za/wp-content/uploads/2023/08/Easybet-Logo-South-Africa-online-casino.jpg" alt="Easybet" width="110" height="36" loading="eager"></a>
+    <a class="ti" href="https://bit.ly/BGLulabetReg" target="_blank" rel="noopener sponsored"><img src="https://www.bettingguide.co.za/wp-content/uploads/2022/09/lulabet-south-africa-logo-lulabet.co_.za-colour-logo.png" alt="Lulabet" width="110" height="36" loading="eager"></a>
+    <a class="ti" href="https://bit.ly/Jackpotcityza" target="_blank" rel="noopener sponsored"><img src="https://www.bettingguide.co.za/wp-content/uploads/2024/03/jackpot-city-casino-logo-south-africa-JPC-300x93-1.png" alt="Jackpot City" width="110" height="36" loading="eager"></a>
+    <a class="ti" href="#"><span class="ti-text">YesPlay</span></a>
+    <a class="ti" href="#"><span class="ti-text">Gbets</span></a>
+    <a class="ti" href="#"><span class="ti-text">Sportingbet</span></a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="h-inner">
+    <a class="logo" href="#home" data-page="home" aria-label="Betting Guide SA home">BETTING<span>GUIDE</span><sub>SA</sub></a>
+
+    <!-- Desktop nav -->
+    <nav class="h-nav" aria-label="Main navigation" id="main-nav">
+      <div class="h-nav-item"><a class="h-nav-link" href="#home" data-page="home">Home</a></div>
+      <div class="h-nav-item"><a class="h-nav-link" href="#about" data-page="about">About</a></div>
+      <div class="h-nav-item"><a class="h-nav-link" href="#reviews" data-page="reviews">Best Sites SA</a></div>
+
+      <!-- Dropdown items use data-dropdown for JS init -->
+      <div class="h-nav-item" data-dropdown>
+        <button class="h-nav-link" aria-haspopup="true" aria-expanded="false">Play Slots <span class="arrow">▾</span></button>
+        <div class="dropdown" role="menu">
+          <div class="dd-header">Choose Your Platform</div>
+          <a class="dd-item" href="#slots" data-page="slots" role="menuitem">Hollywoodbets Spina Zonke</a>
+          <a class="dd-item" href="#slots" data-page="slots" role="menuitem">Betway Slots</a>
+          <a class="dd-item" href="#slots" data-page="slots" role="menuitem">Lulabet Slots</a>
+        </div>
+      </div>
+
+      <div class="h-nav-item" data-dropdown>
+        <button class="h-nav-link" aria-haspopup="true" aria-expanded="false">Free Bets &amp; Bonuses <span class="arrow">▾</span></button>
+        <div class="dropdown" role="menu" style="min-width:270px">
+          <div class="dd-header">Welcome Offers</div>
+          <a class="dd-item" href="#bonuses" data-page="bonuses" role="menuitem">Best Welcome Bonuses in SA</a>
+          <div class="dd-divider"></div>
+          <div class="dd-header">By Bookmaker</div>
+          <a class="dd-item" href="#bonuses" data-page="bonuses" role="menuitem"><span style="color:var(--gold)">R2,000</span> — Betway Deposit Bonus</a>
+          <a class="dd-item" href="#bonuses" data-page="bonuses" role="menuitem"><span style="color:var(--gold)">R25 + 50 Spins</span> — Hollywoodbets</a>
+          <a class="dd-item" href="#bonuses" data-page="bonuses" role="menuitem"><span style="color:var(--gold)">R50 Free</span> — Easybet (No Deposit)</a>
+          <a class="dd-item" href="#bonuses" data-page="bonuses" role="menuitem"><span style="color:var(--gold)">R250</span> — Lulabet Free Bet / 100 Spins</a>
+          <a class="dd-item" href="#bonuses" data-page="bonuses" role="menuitem"><span style="color:var(--gold)">R3,000</span> — YesPlay Deposit Bonus</a>
+        </div>
+      </div>
+
+      <div class="h-nav-item" data-dropdown>
+        <button class="h-nav-link" aria-haspopup="true" aria-expanded="false">Spina Zonke <span class="arrow">▾</span></button>
+        <div class="dropdown" role="menu">
+          <div class="dd-header">Guides &amp; Tips</div>
+          <a class="dd-item" href="#slots" data-page="slots" role="menuitem">Full Game List</a>
+          <a class="dd-item" href="#slots" data-page="slots" role="menuitem">10 Winning Strategies</a>
+          <a class="dd-item" href="#slots" data-page="slots" role="menuitem">Spina Zonke FAQ</a>
+          <a class="dd-item" href="#slots" data-page="slots" role="menuitem">Best Games to Win</a>
+          <a class="dd-item" href="#slots" data-page="slots" role="menuitem">Aviator Tips &amp; Guide</a>
+        </div>
+      </div>
+
+      <div class="h-nav-item" data-dropdown>
+        <button class="h-nav-link" aria-haspopup="true" aria-expanded="false">Sports Betting <span class="arrow">▾</span></button>
+        <div class="dropdown" role="menu">
+          <div class="dd-header">By Sport</div>
+          <a class="dd-item" href="#sports" data-page="sports" role="menuitem">⚽ Soccer Betting</a>
+          <a class="dd-item" href="#sports" data-page="sports" role="menuitem">🏉 Rugby Betting</a>
+          <a class="dd-item" href="#sports" data-page="sports" role="menuitem">🏏 Cricket Betting</a>
+          <a class="dd-item" href="#sports" data-page="sports" role="menuitem">🎾 Tennis Betting</a>
+          <a class="dd-item" href="#racing" data-page="racing" role="menuitem">🏇 Horse Racing</a>
+        </div>
+      </div>
+
+      <div class="h-nav-item" data-dropdown>
+        <button class="h-nav-link" aria-haspopup="true" aria-expanded="false">Lucky Numbers <span class="arrow">▾</span></button>
+        <div class="dropdown" role="menu">
+          <div class="dd-header">Lotteries &amp; Results</div>
+          <a class="dd-item" href="#lucky" data-page="lucky" role="menuitem">Today's Results</a>
+          <a class="dd-item" href="#lucky" data-page="lucky" role="menuitem">Lucky Numbers Generator</a>
+          <a class="dd-item" href="#lucky" data-page="lucky" role="menuitem">Fafi Dream Guide</a>
+          <div class="dd-divider"></div>
+          <div class="dd-header">By Lottery</div>
+          <a class="dd-item" href="#lucky" data-page="lucky" role="menuitem">SA Daily Lotto</a>
+          <a class="dd-item" href="#lucky" data-page="lucky" role="menuitem">SA Powerball</a>
+          <a class="dd-item" href="#lucky" data-page="lucky" role="menuitem">UK 49's in SA</a>
+        </div>
+      </div>
+
+      <div class="h-nav-item"><a class="h-nav-link" href="#casino" data-page="casino">Casino &amp; Live</a></div>
+      <div class="h-nav-item"><a class="h-nav-link" href="#apps" data-page="apps">📱 Apps</a></div>
+      <div class="h-nav-item"><a class="h-nav-link" href="#promos" data-page="promos">🔥 Promos</a></div>
     </nav>
-  </header>
 
-  <section id="features">
-    <h1>Discover the Power of Binance Coin</h1>
-    <p>Invest in the future of cryptocurrency with Binance Coin. Our platform offers a range of features to help you succeed in the world of digital currency.</p>
-  </section>
+    <div class="h-actions">
+      <button class="icon-btn" id="s-btn" aria-label="Search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <a class="nb-cta d-hide-mobile" href="https://bit.ly/EasybetZA" target="_blank" rel="noopener sponsored">🎁 Claim R50 Free</a>
+      <button class="ham" id="ham-btn" aria-label="Open menu" aria-expanded="false" aria-controls="offcanvas">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
 
-  <section id="how-it-works">
-    <h2>How It Works</h2>
-    <p>Our user-friendly interface and advanced trading tools make it easy to buy, sell, and trade Binance Coin. Here's how it works:</p>
-    <ul>
-      <li>Create an account</li>
-      <li>Deposit funds</li>
-      <li>Start trading</li>
-    </ul>
-  </section>
+<!-- SEARCH OVERLAY -->
+<div class="s-overlay" id="s-overlay" role="dialog" aria-label="Search site" aria-modal="true">
+  <button class="s-close" id="s-close" aria-label="Close search">✕</button>
+  <div class="s-inner">
+    <label class="s-label" for="s-input">Search articles, reviews &amp; tips</label>
+    <input type="search" id="s-input" class="s-input" placeholder="e.g. Spina Zonke tips, Betway bonus…" autocomplete="off">
+    <div class="s-chips" role="list" aria-label="Suggested searches">
+      <button class="s-chip" role="listitem">Spina Zonke tips</button>
+      <button class="s-chip" role="listitem">Betway R2000 bonus</button>
+      <button class="s-chip" role="listitem">Gates of Olympus</button>
+      <button class="s-chip" role="listitem">Free spins SA</button>
+      <button class="s-chip" role="listitem">Soccer betting</button>
+      <button class="s-chip" role="listitem">Lucky numbers today</button>
+    </div>
+  </div>
+</div>
 
-  <section id="get-started">
-    <h2>Get Started Today</h2>
-    <p>Ready to join the Binance Coin revolution? Sign up now and take your first step towards financial freedom.</p>
-    <form id="form" action="https://www.freecodecamp.com/email-submit" method="post">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required>
-      <input type="submit" id="submit" value="Get Started">
-    </form>
-  </section>
+<!-- PAGE CONTENT (SPA router renders here) -->
+<main id="page-content" tabindex="-1"></main>
 
-  <video id="video" src="https://www.youtube.com/embed/ks2a4ZPI7tU?start=13" controls></video>
+<!-- SUBNAV -->
+<nav class="subnav" aria-label="Quick category links" id="subnav">
+  <div class="subnav-track">
+    <a class="sn-link" href="#sports" data-page="sports"><span>⚽</span>Soccer</a>
+    <a class="sn-link" href="#sports" data-page="sports"><span>🏉</span>Rugby</a>
+    <a class="sn-link" href="#casino" data-page="casino"><span>🃏</span>Casino</a>
+    <a class="sn-link" href="#sports" data-page="sports"><span>🎾</span>Tennis</a>
+    <a class="sn-link" href="#racing" data-page="racing"><span>🏇</span>Racing</a>
+    <a class="sn-link" href="#reviews" data-page="reviews"><span>⭐</span>Reviews</a>
+    <a class="sn-link" href="#lucky" data-page="lucky"><span>🍀</span>Lotto</a>
+    <a class="sn-link" href="#promos" data-page="promos"><span>🎁</span>Promos</a>
+    <a class="sn-link" href="#apps" data-page="apps"><span>📱</span>Apps</a>
+    <a class="sn-link" href="#sports" data-page="sports"><span>🏏</span>Cricket</a>
+    <a class="sn-link" href="#slots" data-page="slots"><span>🎰</span>Slots</a>
+    <a class="sn-link" href="#slots" data-page="slots"><span>🎯</span>Spina Zonke</a>
+  </div>
+</nav>
 
-  <style>
-    /* CSS styles for the Binance Coin landing page */
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="footer-top">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="fc-logo">BETTING<span>GUIDE</span> SA</div>
+          <p class="fc-desc">South Africa's #1 independent resource for sports betting, online slots and casino reviews. Helping SA bettors since 2019.</p>
+          <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn btn-outline btn-sm" href="#about" data-page="about">About Us</a>
+            <a class="btn btn-outline btn-sm" href="#about" data-page="about">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="fc-title">Online Slots</h3>
+          <ul class="fc-links">
+            <li><a href="#slots" data-page="slots">Spina Zonke Guide</a></li>
+            <li><a href="#slots" data-page="slots">Best Spina Zonke Games</a></li>
+            <li><a href="#slots" data-page="slots">10 Winning Strategies</a></li>
+            <li><a href="#slots" data-page="slots">Gates of Olympus Review</a></li>
+            <li><a href="#slots" data-page="slots">Betway Slots Guide</a></li>
+            <li><a href="#slots" data-page="slots">How to Buy Slot Features</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="fc-title">Sports Betting</h3>
+          <ul class="fc-links">
+            <li><a href="#reviews" data-page="reviews">Best Betting Sites SA</a></li>
+            <li><a href="#sports" data-page="sports">How to Bet on Soccer</a></li>
+            <li><a href="#sports" data-page="sports">How to Bet on Rugby</a></li>
+            <li><a href="#sports" data-page="sports">How to Bet on Cricket</a></li>
+            <li><a href="#sports" data-page="sports">Best Multibet Bonuses</a></li>
+            <li><a href="#racing" data-page="racing">Horse Racing Betting</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="fc-title">Bonuses &amp; More</h3>
+          <ul class="fc-links">
+            <li><a href="#bonuses" data-page="bonuses">All Welcome Bonuses</a></li>
+            <li><a href="#bonuses" data-page="bonuses">Betway R2,000 Bonus</a></li>
+            <li><a href="#bonuses" data-page="bonuses">Hollywoodbets Free Spins</a></li>
+            <li><a href="#lucky" data-page="lucky">Lucky Numbers Results</a></li>
+            <li><a href="#lucky" data-page="lucky">Fafi Dream Guide</a></li>
+            <li><a href="#apps" data-page="apps">Betting Apps SA</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    /* Reset default margin and padding for better consistency */
-    body, h1, h2, p {
-      margin: 0;
-      padding: 0;
+  <div class="footer-rg">
+    <div class="wrap">
+      <p class="rg-text">For more information visit <a href="http://www.responsiblegambling.co.za/" target="_blank" rel="noopener">responsiblegambling.co.za</a> | <a href="tel:0800006008">0800 006 008</a> | National Gambling Board</p>
+      <div class="rg-badges">
+        <span class="rg-badge">18+ Only</span>
+        <span class="rg-badge">🎗 Gamble Responsibly</span>
+        <span class="rg-badge">Licensed SA</span>
+        <button class="back-top" id="back-top">↑ Back to Top</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-copy">
+    Copyright &copy; <span id="yr"></span> Betting Guide SA — All Rights Reserved
+    <a href="#about" data-page="about">Privacy Policy</a>
+    <a href="#about" data-page="about">Terms &amp; Conditions</a>
+    <a href="#about" data-page="about">Responsible Gambling</a>
+  </div>
+</footer>
+
+<!-- MOBILE CTA -->
+<div class="mob-cta" id="mob-cta" role="complementary" aria-label="Current best offer">
+  <div class="mob-cta-info">
+    <div class="mob-cta-label">🔥 Best Offer Right Now</div>
+    <div class="mob-cta-amount">Easybet — R50 FREE (No Deposit)</div>
+  </div>
+  <a class="btn btn-gold btn-sm" href="https://bit.ly/EasybetZA" target="_blank" rel="noopener sponsored">Claim →</a>
+  <button class="mob-cta-x" id="mob-x" aria-label="Dismiss offer">✕</button>
+</div>
+
+<!-- COOKIE CONSENT -->
+<div class="cookie" id="cookie" role="dialog" aria-label="Cookie consent" aria-live="polite">
+  <p class="cookie-text">We use cookies to personalise content and improve your experience. By continuing, you agree to our <a href="#about" data-page="about">Privacy Policy</a>.</p>
+  <div class="cookie-actions">
+    <button class="btn btn-outline btn-sm" id="ck-no">Decline</button>
+    <button class="btn btn-gold btn-sm" id="ck-yes">Accept All</button>
+  </div>
+</div>
+
+<!-- OFF-CANVAS + BACKDROP -->
+<div class="backdrop" id="backdrop" aria-hidden="true"></div>
+<div class="offcanvas" id="offcanvas" role="dialog" aria-label="Navigation menu" aria-modal="true">
+  <div class="oc-header">
+    <span class="logo" style="font-size:16px">BETTING<span>GUIDE</span></span>
+    <button class="oc-close" id="oc-close" aria-label="Close menu">✕</button>
+  </div>
+  <div class="oc-search">
+    <div class="oc-search-row">
+      <input type="search" class="oc-search-input" placeholder="Search…" aria-label="Search site">
+      <button class="btn btn-gold btn-sm">Go</button>
+    </div>
+  </div>
+  <ul class="oc-body" id="oc-body" role="menu">
+    <li class="oc-item"><a class="oc-link" href="#home" data-page="home" role="menuitem">Home</a></li>
+    <li class="oc-item"><a class="oc-link" href="#bonuses" data-page="bonuses" role="menuitem">🎁 Best Bonuses</a></li>
+    <li class="oc-item">
+      <button class="oc-link" data-acc aria-expanded="false">Online Slots <span class="oc-arr">›</span></button>
+      <ul class="oc-sub" role="menu">
+        <li><a class="oc-sub-link" href="#slots" data-page="slots" role="menuitem">Spina Zonke Guide</a></li>
+        <li><a class="oc-sub-link" href="#slots" data-page="slots" role="menuitem">All Online Slots</a></li>
+        <li><a class="oc-sub-link" href="#slots" data-page="slots" role="menuitem">Winning Tips</a></li>
+        <li><a class="oc-sub-link" href="#slots" data-page="slots" role="menuitem">Full Game List</a></li>
+      </ul>
+    </li>
+    <li class="oc-item">
+      <button class="oc-link" data-acc aria-expanded="false">Sports Betting <span class="oc-arr">›</span></button>
+      <ul class="oc-sub" role="menu">
+        <li><a class="oc-sub-link" href="#sports" data-page="sports" role="menuitem">Soccer Betting</a></li>
+        <li><a class="oc-sub-link" href="#sports" data-page="sports" role="menuitem">Rugby Betting</a></li>
+        <li><a class="oc-sub-link" href="#sports" data-page="sports" role="menuitem">Cricket Betting</a></li>
+        <li><a class="oc-sub-link" href="#racing" data-page="racing" role="menuitem">Horse Racing</a></li>
+      </ul>
+    </li>
+    <li class="oc-item">
+      <button class="oc-link" data-acc aria-expanded="false">Casino &amp; Live <span class="oc-arr">›</span></button>
+      <ul class="oc-sub" role="menu">
+        <li><a class="oc-sub-link" href="#casino" data-page="casino" role="menuitem">Casino Games</a></li>
+        <li><a class="oc-sub-link" href="#casino" data-page="casino" role="menuitem">Evolution Live Games</a></li>
+        <li><a class="oc-sub-link" href="#casino" data-page="casino" role="menuitem">Lightning Roulette</a></li>
+      </ul>
+    </li>
+    <li class="oc-item">
+      <button class="oc-link" data-acc aria-expanded="false">Free Bets &amp; Bonuses <span class="oc-arr">›</span></button>
+      <ul class="oc-sub" role="menu">
+        <li><a class="oc-sub-link" href="#bonuses" data-page="bonuses" role="menuitem">All Welcome Bonuses</a></li>
+        <li><a class="oc-sub-link" href="#bonuses" data-page="bonuses" role="menuitem">Betway R2,000 Bonus</a></li>
+        <li><a class="oc-sub-link" href="#bonuses" data-page="bonuses" role="menuitem">Hollywoodbets R25 Free</a></li>
+      </ul>
+    </li>
+    <li class="oc-item"><a class="oc-link" href="#lucky" data-page="lucky" role="menuitem">🍀 Lucky Numbers</a></li>
+    <li class="oc-item"><a class="oc-link" href="#reviews" data-page="reviews" role="menuitem">⭐ Bookmaker Reviews</a></li>
+    <li class="oc-item"><a class="oc-link" href="#promos" data-page="promos" role="menuitem">🔥 Promotions</a></li>
+    <li class="oc-item"><a class="oc-link" href="#apps" data-page="apps" role="menuitem">📱 Betting Apps</a></li>
+    <li class="oc-item"><a class="oc-link" href="#about" data-page="about" role="menuitem">ℹ About Us</a></li>
+  </ul>
+  <div class="oc-foot">
+    <p class="oc-foot-note">18+ | Gamble Responsibly | <a href="http://www.responsiblegambling.co.za/" target="_blank" rel="noopener" style="color:var(--dim)">responsiblegambling.co.za</a></p>
+    <a class="btn btn-gold btn-full" href="https://bit.ly/EasybetZA" target="_blank" rel="noopener sponsored">🎁 Claim R50 Free — Easybet</a>
+  </div>
+</div>
+
+<script>
+/* ════════════════════════════════════════════════════════════
+   UTILITY HELPERS
+════════════════════════════════════════════════════════════ */
+const $ = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+const on = (el, ev, fn, opts) => el && el.addEventListener(ev, fn, opts);
+const off = (el, ev, fn) => el && el.removeEventListener(ev, fn);
+
+/* ════════════════════════════════════════════════════════════
+   COMPONENT TEMPLATES (pure functions → HTML strings)
+════════════════════════════════════════════════════════════ */
+const T = {
+  offerCard({ featured=false, badge='', logo='', logoAlt='', logoText='', amount, sub, desc, stars, score, link }) {
+    return `<div class="offer-card${featured ? ' featured' : ''}">
+      ${badge ? `<span class="offer-badge">${badge}</span>` : ''}
+      <div class="offer-logo-wrap">
+        ${logo ? `<img class="offer-logo" src="${logo}" alt="${logoAlt}" loading="lazy" width="110" height="32">` : `<span class="offer-logo-text">${logoText}</span>`}
+      </div>
+      <div class="offer-amount">${amount}</div>
+      <div class="offer-sub">${sub}</div>
+      <p class="offer-desc">${desc}</p>
+      <div class="offer-footer">
+        <div><div class="offer-stars">${stars}</div><div class="offer-score">${score}</div></div>
+        <a class="claim-btn" href="${link}" target="_blank" rel="noopener sponsored">Claim Now →</a>
+      </div>
+      <p class="offer-tc">T&amp;Cs apply. 18+ only.</p>
+    </div>`;
+  },
+
+  postCard({ img, tag, tagLabel, title, date, read, page, excerpt = '' }) {
+    return `<article class="pc">
+      <div class="pc-img">
+        <div class="pc-bg" style="background-image:url(${img})"></div>
+        <div class="pc-ov"></div>
+        <div class="pc-tag"><span class="tag tag-${tag}">${tagLabel}</span></div>
+      </div>
+      <div class="pc-body">
+        <a class="pc-title" href="#${page}" data-page="${page}">${title}</a>
+        ${excerpt ? `<p class="pc-excerpt">${excerpt}</p>` : ''}
+        <div class="pc-meta"><span>${date}</span><span>·</span><span>${read} read</span></div>
+      </div>
+    </article>`;
+  },
+
+  bookieItem({ img, alt, name, bonus, link }) {
+    return `<div class="bw-item">
+      ${img ? `<img class="bw-logo" src="${img}" alt="${alt}" loading="lazy" width="68" height="28">` : `<div class="bw-logo-text">${name.substring(0,3)}</div>`}
+      <div class="bw-info"><div class="bw-name">${name}</div><div class="bw-bonus">${bonus}</div></div>
+      <a class="bw-btn" href="${link}" target="_blank" rel="noopener sponsored">Visit</a>
+    </div>`;
+  },
+
+  reviewCard({ logo, logoAlt, score, bonus, bonusLabel, dep, pros, cons, link, badge }) {
+    return `<div class="review-card">
+      <div class="review-card-top">
+        <img class="rc-logo" src="${logo}" alt="${logoAlt}" loading="lazy" width="110" height="36">
+        ${badge ? `<span class="tag tag-hot" style="margin-left:8px">${badge}</span>` : ''}
+        <div class="rc-meta"><div class="rc-score">${score}/5</div><div class="rc-stars">★★★★★</div></div>
+      </div>
+      <div class="review-card-body">
+        <div class="rc-bonus">${bonus}</div>
+        <p class="rc-bonus-label">${bonusLabel}</p>
+        <div class="rc-pros-cons">
+          <div>
+            <div class="rc-col-title">✅ Pros</div>
+            ${pros.map(p => `<div class="rc-pro">${p}</div>`).join('')}
+          </div>
+          <div>
+            <div class="rc-col-title">❌ Cons</div>
+            ${cons.map(c => `<div class="rc-con">${c}</div>`).join('')}
+          </div>
+        </div>
+        <div class="rc-footer">
+          <span class="rc-dep">Min Deposit: <strong>R${dep}</strong></span>
+          <a class="btn btn-gold btn-sm" href="${link}" target="_blank" rel="noopener sponsored">Claim Bonus →</a>
+        </div>
+      </div>
+    </div>`;
+  },
+
+  sportCard({ emoji, title, desc, link, page }) {
+    return `<div class="sport-card">
+      <div class="sport-card-img" style="background:linear-gradient(135deg,var(--navy-3),var(--navy-4))">
+        <div class="sport-card-emoji">${emoji}</div>
+      </div>
+      <div class="sport-card-body">
+        <div class="sport-card-title">${title}</div>
+        <p class="sport-card-desc">${desc}</p>
+        <a class="btn btn-outline btn-sm btn-full" href="${link}" data-page="${page}">View Guides →</a>
+      </div>
+    </div>`;
+  },
+
+  casinoCard({ emoji, name, provider, desc, rtp, link }) {
+    return `<div class="sport-card">
+      <div class="sport-card-img" style="background:linear-gradient(135deg,var(--navy-3),var(--navy-4))">
+        <div class="sport-card-emoji">${emoji}</div>
+      </div>
+      <div class="sport-card-body">
+        <div class="sport-card-title">${name}</div>
+        <p style="font-size:11px;color:var(--muted);font-family:var(--fh);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">${provider} · RTP: ${rtp}</p>
+        <p class="sport-card-desc">${desc}</p>
+        <a class="btn btn-outline btn-sm btn-full" href="${link}" data-page="casino">Learn More →</a>
+      </div>
+    </div>`;
+  },
+
+  appCard({ icon, name, developer, rating, android, ios, dataFree, features, desc, link }) {
+    return `<div class="app-card">
+      <div class="app-header">
+        <div class="app-icon">${icon}</div>
+        <div class="app-info">
+          <div class="app-name">${name} ${dataFree ? '<span class="tag tag-new" style="font-size:9px">Data-Free</span>' : ''}</div>
+          <div class="app-developer">${developer}</div>
+        </div>
+      </div>
+      <div class="app-rating">
+        <span class="app-stars">★★★★★</span>
+        <span class="app-score">${rating}/5</span>
+      </div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.6">${desc}</p>
+      <div class="app-features">${features.map(f => `<span class="app-feat">${f}</span>`).join('')}</div>
+      <div class="app-platforms">
+        ${android ? '<span class="app-plat android">📱 Android</span>' : ''}
+        ${ios ? '<span class="app-plat ios">🍎 iOS</span>' : '<span class="app-plat">No iOS</span>'}
+      </div>
+      <a class="btn btn-gold btn-full" href="${link}" target="_blank" rel="noopener">Download App →</a>
+    </div>`;
+  },
+
+  drawCard({ name, time, balls, bonus, desc }) {
+    return `<div class="draw-card">
+      <div class="draw-name">${name}</div>
+      <div class="draw-time">⏰ ${time}</div>
+      <div class="draw-balls">
+        ${balls.map(b => `<div class="ball">${b}</div>`).join('')}
+        ${bonus !== null ? `<div class="ball bonus">${bonus}</div>` : ''}
+      </div>
+      <p class="draw-desc">${desc}</p>
+      <a class="btn btn-gold btn-full" href="https://bit.ly/hollyfree50gmb" target="_blank" rel="noopener sponsored">Play Lucky Numbers →</a>
+    </div>`;
+  },
+
+  promoCard({ book, amount, name, desc, expiry, link }) {
+    return `<div class="promo-card">
+      <div class="promo-book">${book}</div>
+      <div class="promo-amount">${amount}</div>
+      <div class="promo-name">${name}</div>
+      <p class="promo-desc">${desc}</p>
+      <div class="promo-footer">
+        <span class="promo-expiry">Ends: <strong>${expiry}</strong></span>
+        <a class="btn btn-gold btn-sm" href="${link}" target="_blank" rel="noopener sponsored">Claim →</a>
+      </div>
+    </div>`;
+  },
+
+  faqItems(items) {
+    return items.map(({ q, a }) => `
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">${q}<span class="faq-arr">›</span></button>
+        <div class="faq-a" hidden>${a}</div>
+      </div>`).join('');
+  },
+
+  compareTable() {
+    const rows = [
+      { logo: 'https://www.bettingguide.co.za/wp-content/uploads/2021/06/Betway-300x181-2.png', alt: 'Betway', badge: 'Best Overall', bonus: 'R2,000', sub: '100% Deposit Match', stars: '★★★★★', rating: '4.9/5', slots: true, live: true, app: 'iOS &amp; Android', dep: 'R25', link: 'https://bit.ly/betwaygmbcode', top: true },
+      { logo: 'https://www.bettingguide.co.za/wp-content/uploads/2022/02/Hollywoodbets-new-logo-2022-1.png', alt: 'Hollywoodbets', bonus: 'R25 Free', sub: '+ 50 Spins (No Deposit)', stars: '★★★★★', rating: '4.8/5', slots: true, live: true, app: 'iOS &amp; Android', dep: 'R10', link: 'https://bit.ly/hollyfree50gmb' },
+      { logo: 'https://www.bettingguide.co.za/wp-content/uploads/2023/08/Easybet-Logo-South-Africa-online-casino.jpg', alt: 'Easybet', bonus: 'R50 Free', sub: 'No Deposit Needed', stars: '★★★★½', rating: '4.7/5', slots: true, live: true, app: 'Android', dep: 'R10', link: 'https://bit.ly/EasybetZA' },
+      { logo: 'https://www.bettingguide.co.za/wp-content/uploads/2022/09/lulabet-south-africa-logo-lulabet.co_.za-colour-logo.png', alt: 'Lulabet', bonus: 'R250', sub: 'Free Bet or 100 Spins', stars: '★★★★☆', rating: '4.5/5', slots: true, live: true, app: 'Android', dep: 'R50', link: 'https://bit.ly/BGLulabetReg' },
+      { logoText: 'YesPlay', bonus: 'R3,000', sub: '100% Deposit Match', stars: '★★★★☆', rating: '4.4/5', slots: true, live: true, app: 'Web Only', dep: 'R20', link: '#' },
+      { logo: 'https://www.bettingguide.co.za/wp-content/uploads/2024/03/jackpot-city-casino-logo-south-africa-JPC-300x93-1.png', alt: 'Jackpot City', bonus: 'R10,000', sub: '4× Matched Deposits', stars: '★★★★☆', rating: '4.4/5', slots: true, live: true, app: 'iOS &amp; Android', dep: 'R30', link: 'https://bit.ly/Jackpotcityza' },
+    ];
+    return `<section class="sec sec-dark" id="compare">
+      <div class="wrap">
+        <p class="eyebrow">Side by Side</p>
+        <h2 class="sec-title" style="margin-bottom:8px">Compare <span>SA Bookmakers</span></h2>
+        <p class="sec-desc">All information independently verified and updated monthly.</p>
+        <div class="cmp-wrap">
+          <table class="cmp" role="table">
+            <thead><tr>
+              <th scope="col">Bookmaker</th><th scope="col">Welcome Bonus</th><th scope="col">Rating</th>
+              <th scope="col">Slots</th><th scope="col">Live</th><th scope="col">App</th>
+              <th scope="col">Min Dep</th><th scope="col">Action</th>
+            </tr></thead>
+            <tbody>
+              ${rows.map(r => `<tr${r.top ? ' class="top"' : ''}>
+                <td>
+                  ${r.logo ? `<div class="cmp-logo"><img src="${r.logo}" alt="${r.alt}" loading="lazy" width="95" height="26"></div>` : `<div class="cmp-logo-text">${r.logoText}</div>`}
+                  ${r.badge ? `<span class="top-badge">${r.badge}</span>` : ''}
+                </td>
+                <td><div class="cmp-bonus">${r.bonus}</div><div class="cmp-sub">${r.sub}</div></td>
+                <td><div class="cmp-stars">${r.stars}</div><div class="cmp-rating">${r.rating}</div></td>
+                <td><span class="badge${r.slots ? '' : ' no'}">${r.slots ? 'Yes' : 'No'}</span></td>
+                <td><span class="badge${r.live ? '' : ' no'}">${r.live ? 'Yes' : 'No'}</span></td>
+                <td><span class="badge${r.app === 'Web Only' ? ' no' : ''}">${r.app}</span></td>
+                <td>${r.dep}</td>
+                <td><a class="btn btn-gold btn-sm" href="${r.link}" target="_blank" rel="noopener sponsored">Claim →</a></td>
+              </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+        <p class="cmp-tc">T&amp;Cs apply. 18+. Gamble responsibly. <a href="#about" data-page="about">How we rate bookmakers →</a></p>
+      </div>
+    </section>`;
+  },
+
+  promoScroll() {
+    const promos = [
+      { book: 'Betway', amount: 'R2,000', name: 'First Deposit Bonus', desc: '100% matched deposit on your first bet.', expiry: '30 Apr 2025', link: 'https://bit.ly/betwaygmbcode' },
+      { book: 'Hollywoodbets', amount: '50 Spins', name: 'Spina Zonke Free Spins', desc: '50 free spins on registration. No deposit needed.', expiry: 'Ongoing', link: 'https://bit.ly/hollyfree50gmb' },
+      { book: 'Easybet', amount: 'R50', name: 'No Deposit Bonus', desc: 'Get R50 free — no deposit required.', expiry: 'Ongoing', link: 'https://bit.ly/EasybetZA' },
+      { book: 'Lulabet', amount: 'R250', name: 'Welcome Free Bet', desc: 'R250 free bet or 100 free spins.', expiry: '31 May 2025', link: 'https://bit.ly/BGLulabetReg' },
+      { book: 'YesPlay', amount: 'R3,000', name: 'Deposit Match Bonus', desc: 'Double your first deposit up to R3,000.', expiry: 'Ongoing', link: '#' },
+      { book: 'Jackpot City', amount: 'R10,000', name: '4× Deposit Package', desc: 'Bonuses across your first four deposits.', expiry: 'Ongoing', link: 'https://bit.ly/Jackpotcityza' },
+    ];
+    return `<section class="sec sec-alt">
+      <div class="wrap">
+        <div class="flex-b" style="margin-bottom:22px">
+          <div><p class="eyebrow">Don't Miss Out</p><h2 class="sec-title">Latest <span>Promotions</span></h2></div>
+          <a class="btn btn-outline btn-sm" href="#promos" data-page="promos">All Promos →</a>
+        </div>
+        <div class="promo-scroll">${promos.map(p => T.promoCard(p)).join('')}</div>
+      </div>
+    </section>`;
+  },
+
+  newsletter() {
+    return `<div class="nl-section">
+      <div class="wrap">
+        <div class="nl-inner">
+          <div>
+            <p class="eyebrow">Join 100,000+ SA Bettors</p>
+            <h2 class="nl-heading">Get <em>Bonus Alerts</em><br>Before Everyone Else</h2>
+            <p class="nl-sub">Weekly email with the latest free bets, free spins and exclusive promotions.</p>
+            <div class="nl-perks">
+              <div class="nl-perk"><span class="nl-perk-icon">✓</span>Exclusive bonus codes</div>
+              <div class="nl-perk"><span class="nl-perk-icon">✓</span>Weekly Spina Zonke tips</div>
+              <div class="nl-perk"><span class="nl-perk-icon">✓</span>Lucky Numbers results every draw day</div>
+            </div>
+          </div>
+          <div>
+            <input type="text" class="nl-field" placeholder="First name" aria-label="First name">
+            <input type="email" class="nl-field" placeholder="Email address" aria-label="Email address">
+            <button class="btn btn-gold btn-full btn-lg">🔔 Subscribe — It's Free</button>
+            <p class="nl-note">No spam. Unsubscribe anytime. <a href="#about" data-page="about" style="color:var(--dim)">Privacy Policy</a></p>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  },
+};
+
+/* ════════════════════════════════════════════════════════════
+   PAGE CONTENT LIBRARY
+════════════════════════════════════════════════════════════ */
+const PAGES = {
+
+  home: () => `
+    <section class="hero">
+      <div class="hero-bg" style="background-image:url(https://images.unsplash.com/photo-1541252260730-0412e8e2108e?w=1400&q=80)"></div>
+      <div class="wrap">
+        <div class="hero-content fade-up">
+          <p class="eyebrow">⭐ South Africa's #1 Betting Resource</p>
+          <h1 class="page-hero-title">Best Online Betting Sites,<br><em>Bonuses &amp; Slots</em> in SA — 2025</h1>
+          <p class="hero-excerpt">Compare bookmakers, claim the best welcome bonuses and read expert reviews of Spina Zonke slots, live casino and sports betting markets. Updated weekly.</p>
+          <div class="hero-btns">
+            <a class="btn btn-gold btn-lg" href="#bonuses" data-page="bonuses">Compare All Bonuses</a>
+            <a class="btn btn-outline" href="#reviews" data-page="reviews">View Bookmakers</a>
+          </div>
+          <div class="hero-meta"><span>📅 Updated April 2025</span><span>🇿🇦 South Africa</span><span>100k+ Monthly Readers</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-bar">
+      <div class="trust-track wrap">
+        <div class="trust-item">🛡 Licensed &amp; Regulated</div>
+        <div class="trust-div"></div>
+        <div class="trust-item">🕐 Updated Weekly</div>
+        <div class="trust-div"></div>
+        <div class="trust-item">👥 100k+ Monthly Readers</div>
+        <div class="trust-div"></div>
+        <div class="trust-item" style="color:var(--red)">⚠ 18+ Only</div>
+        <div class="trust-div"></div>
+        <div class="trust-item">✅ Honest Independent Reviews</div>
+      </div>
+    </div>
+
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <div class="flex-b">
+          <div><p class="eyebrow">🔥 Live Right Now</p><h2 class="sec-title">Best <span>Welcome Bonuses</span> in SA</h2></div>
+          <a class="btn btn-outline btn-sm" href="#bonuses" data-page="bonuses">See All Bonuses →</a>
+        </div>
+        <div class="offers-grid">
+          ${T.offerCard({ featured: true, badge: "Editor's Pick", logo: 'https://www.bettingguide.co.za/wp-content/uploads/2021/06/Betway-300x181-2.png', logoAlt: 'Betway', amount: 'R2,000', sub: '100% Deposit Match', desc: 'Matched deposit bonus on your first deposit. Valid for sports and slots. Min deposit R25. Wagering requirements apply.', stars: '★★★★★', score: '4.9/5', link: 'https://bit.ly/betwaygmbcode' })}
+          ${T.offerCard({ logo: 'https://www.bettingguide.co.za/wp-content/uploads/2022/02/Hollywoodbets-new-logo-2022-1.png', logoAlt: 'Hollywoodbets', amount: 'R25 Free', sub: '+ 50 Spina Zonke Spins', desc: 'Register and get R25 free bet plus 50 free spins on selected Spina Zonke slots. No deposit needed.', stars: '★★★★★', score: '4.8/5', link: 'https://bit.ly/hollyfree50gmb' })}
+          ${T.offerCard({ badge: 'No Deposit!', logo: 'https://www.bettingguide.co.za/wp-content/uploads/2023/08/Easybet-Logo-South-Africa-online-casino.jpg', logoAlt: 'Easybet', amount: 'R50 Free', sub: 'No Deposit Needed', desc: 'Sign up and get R50 free. Includes free bets and spins on top slots.', stars: '★★★★½', score: '4.7/5', link: 'https://bit.ly/EasybetZA' })}
+          ${T.offerCard({ logo: 'https://www.bettingguide.co.za/wp-content/uploads/2022/09/lulabet-south-africa-logo-lulabet.co_.za-colour-logo.png', logoAlt: 'Lulabet', amount: 'R250', sub: 'Free Bet OR 100 Spins', desc: 'Choose between a R250 sports free bet or 100 free spins on your favourite slot games.', stars: '★★★★☆', score: '4.5/5', link: 'https://bit.ly/BGLulabetReg' })}
+        </div>
+      </div>
+    </section>
+
+    <div class="qlink-strip">
+      <div class="qlink-track">
+        <button class="qchip active">🎰 All Content</button>
+        <button class="qchip">⭐ Reviews</button>
+        <button class="qchip">💡 Tips</button>
+        <button class="qchip">📰 News</button>
+        <button class="qchip">🎯 Spina Zonke</button>
+        <button class="qchip">⚽ Soccer</button>
+        <button class="qchip">🃏 Casino</button>
+        <button class="qchip">🍀 Lucky Numbers</button>
+      </div>
+    </div>
+
+    <section class="sec">
+      <div class="wrap">
+        <div class="flex-b" style="margin-bottom:24px">
+          <div><p class="eyebrow">Latest Articles</p><h2 class="sec-title">Spina Zonke <span>Reviews &amp; Tips</span></h2></div>
+          <div class="ftabs">
+            <button class="ftab active">All</button>
+            <button class="ftab">Reviews</button>
+            <button class="ftab">Tips</button>
+            <button class="ftab">News</button>
+          </div>
+        </div>
+        <div class="with-sidebar">
+          <div>
+            <div class="posts-grid">
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2023/04/What-is-the-Best-Time-to-Play-Online-Slots-in-South-Africa.jpg', tag: 'tip', tagLabel: 'Tip', title: 'What is the Best Time to Play Online Slots in South Africa?', date: 'April 2025', read: '8 min', page: 'slots' })}
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2023/04/Gates-of-Olympus-Slot-Scatters-South-Africa.png', tag: 'review', tagLabel: 'Review', title: 'Gates of Olympus Slot Review — Is It Worth Playing in SA?', date: 'March 2025', read: '10 min', page: 'slots' })}
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2023/02/How-To-Win-Big-Playing-Online-Slots-in-South-Africa.jpg', tag: 'tip', tagLabel: 'Tip', title: 'How to Win Big Playing Online Slots in South Africa', date: 'February 2025', read: '12 min', page: 'slots' })}
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2023/01/Hollywoodbets-Free-Spins-R25-Sign-Up-Bonus-300x250-1.gif', tag: 'news', tagLabel: 'News', title: 'Hollywoodbets Free Spins | Get 50 Spina Zonke Spins When You Register', date: 'January 2025', read: '5 min', page: 'bonuses' })}
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2022/01/Hollywoodbets-Spina-Zonke-Dead-or-Alive-Game-NetEnt.png', tag: 'tip', tagLabel: 'Tip', title: 'How to Play Online Slots in SA | A Quick Guide For Beginners', date: 'December 2024', read: '9 min', page: 'slots' })}
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2022/11/Gates-of-Olympus-Bonus-Buy-Pragmatic-Play-South-Africa-1.jpg', tag: 'tip', tagLabel: 'Tip', title: 'How to Buy Features on Pragmatic Play Slots | Bonus Buy Guide', date: 'October 2024', read: '6 min', page: 'slots' })}
+            </div>
+            <nav class="pagination" aria-label="Article pages">
+              <span class="pgbtn active" aria-current="page">1</span>
+              <a class="pgbtn" href="#slots" data-page="slots">2</a>
+              <a class="pgbtn" href="#slots" data-page="slots">3</a>
+              <a class="pgbtn" href="#slots" data-page="slots">Next →</a>
+            </nav>
+          </div>
+          <aside class="sidebar" aria-label="Sidebar">
+            <div class="widget">
+              <div class="w-head"><h3 class="w-title">🔥 Trending Now</h3></div>
+              <div class="w-body">
+                <div class="bw-item"><div class="bw-logo-text" style="font-size:24px;width:28px">01</div><div class="bw-info"><a class="bw-name" href="#slots" data-page="slots" style="display:block;color:var(--text);font-size:12px;line-height:1.4">10 Spina Zonke Winning Strategies That Actually Work</a><span class="tag tag-tip" style="margin-top:5px">Tip</span></div></div>
+                <div class="bw-item"><div class="bw-logo-text" style="font-size:24px;width:28px">02</div><div class="bw-info"><a class="bw-name" href="#slots" data-page="slots" style="display:block;color:var(--text);font-size:12px;line-height:1.4">Which Spina Zonke Game is Easiest to Win?</a><span class="tag tag-tip" style="margin-top:5px">Tip</span></div></div>
+                <div class="bw-item"><div class="bw-logo-text" style="font-size:24px;width:28px">03</div><div class="bw-info"><a class="bw-name" href="#bonuses" data-page="bonuses" style="display:block;color:var(--text);font-size:12px;line-height:1.4">Betway R2,000 Deposit Bonus — Full Claim Guide</a><span class="tag tag-review" style="margin-top:5px">Review</span></div></div>
+              </div>
+            </div>
+            <div class="widget">
+              <div class="w-head"><h3 class="w-title">🏆 Top Bookmakers</h3></div>
+              <div class="w-body">
+                ${T.bookieItem({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2021/06/Betway-300x181-2.png', alt: 'Betway', name: 'Betway', bonus: 'R2,000 Deposit Bonus', link: 'https://bit.ly/betwaygmbcode' })}
+                ${T.bookieItem({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2022/02/Hollywoodbets-new-logo-2022-1.png', alt: 'Hollywoodbets', name: 'Hollywoodbets', bonus: 'R25 Free + 50 Spins', link: 'https://bit.ly/hollyfree50gmb' })}
+                ${T.bookieItem({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2023/08/Easybet-Logo-South-Africa-online-casino.jpg', alt: 'Easybet', name: 'Easybet', bonus: 'R50 No Deposit Bonus', link: 'https://bit.ly/EasybetZA' })}
+                ${T.bookieItem({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2022/09/lulabet-south-africa-logo-lulabet.co_.za-colour-logo.png', alt: 'Lulabet', name: 'Lulabet', bonus: 'R250 Free Bet / 100 Spins', link: 'https://bit.ly/BGLulabetReg' })}
+              </div>
+            </div>
+            <div class="widget">
+              <div class="w-head"><h3 class="w-title">📬 Bonus Alerts</h3></div>
+              <div class="w-body">
+                <p style="font-size:13px;color:var(--muted);margin-bottom:10px;line-height:1.6">Get the latest free bets and spin deals first.</p>
+                <input type="email" class="nl-field" placeholder="your@email.com" aria-label="Email for bonus alerts" style="margin-bottom:8px">
+                <button class="btn btn-gold btn-full">Subscribe Free</button>
+                <p style="font-size:10px;color:var(--dim);margin-top:7px;text-align:center">No spam. Unsubscribe anytime.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    ${T.compareTable()}
+    ${T.promoScroll()}
+    ${T.newsletter()}`,
+
+  bonuses: () => `
+    <div class="page-hero">
+      <div class="wrap">
+        <div>
+          <div class="breadcrumb"><a href="#home" data-page="home">Home</a><span>›</span>Best Bonuses</div>
+          <p class="eyebrow">🎁 April 2025 — Updated Weekly</p>
+          <h1 class="page-hero-title">Best <em>Welcome Bonuses</em><br>in South Africa</h1>
+          <p class="sec-desc">All bonuses independently verified. We only list bookmakers licensed in South Africa.</p>
+        </div>
+        <div class="grid-2" style="gap:10px;max-width:280px">
+          <div class="stat-card"><div class="stat-num">11</div><div class="stat-label">Listed</div></div>
+          <div class="stat-card"><div class="stat-num">R25k+</div><div class="stat-label">Total Value</div></div>
+        </div>
+      </div>
+    </div>
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <div class="info-box"><p>💡 <strong>How we rate bonuses:</strong> We assess bonus amount, wagering requirements, validity, eligible games, and ease of claiming. T&amp;Cs always apply.</p></div>
+        <div class="offers-grid">
+          ${T.offerCard({ featured: true, badge: "Editor's Pick", logo: 'https://www.bettingguide.co.za/wp-content/uploads/2021/06/Betway-300x181-2.png', logoAlt: 'Betway', amount: 'R2,000', sub: '100% First Deposit Match', desc: '100% matched deposit up to R2,000. Valid for sports and Betway Spins slots. Min deposit R25. Wagering requirements apply.', stars: '★★★★★', score: '4.9/5', link: 'https://bit.ly/betwaygmbcode' })}
+          ${T.offerCard({ badge: 'No Deposit!', logo: 'https://www.bettingguide.co.za/wp-content/uploads/2022/02/Hollywoodbets-new-logo-2022-1.png', logoAlt: 'Hollywoodbets', amount: 'R25 Free', sub: '+ 50 Spina Zonke Spins', desc: 'Register and receive R25 free bet plus 50 free spins. No deposit required.', stars: '★★★★★', score: '4.8/5', link: 'https://bit.ly/hollyfree50gmb' })}
+          ${T.offerCard({ badge: 'No Deposit!', logo: 'https://www.bettingguide.co.za/wp-content/uploads/2023/08/Easybet-Logo-South-Africa-online-casino.jpg', logoAlt: 'Easybet', amount: 'R50 Free', sub: 'No Deposit Needed', desc: 'Sign up and instantly receive R50 in free bets plus bonus free spins.', stars: '★★★★½', score: '4.7/5', link: 'https://bit.ly/EasybetZA' })}
+          ${T.offerCard({ logo: 'https://www.bettingguide.co.za/wp-content/uploads/2022/09/lulabet-south-africa-logo-lulabet.co_.za-colour-logo.png', logoAlt: 'Lulabet', amount: 'R250', sub: 'Free Bet OR 100 Spins', desc: 'Choose: R250 sports free bet or 100 free spins. Min deposit R50.', stars: '★★★★☆', score: '4.5/5', link: 'https://bit.ly/BGLulabetReg' })}
+          ${T.offerCard({ logoText: 'YesPlay', amount: 'R3,000', sub: '100% Deposit Match', desc: 'Double your first deposit up to R3,000. Valid for sports and casino. Min deposit R20.', stars: '★★★★☆', score: '4.4/5', link: '#' })}
+          ${T.offerCard({ logo: 'https://www.bettingguide.co.za/wp-content/uploads/2024/03/jackpot-city-casino-logo-south-africa-JPC-300x93-1.png', logoAlt: 'Jackpot City', amount: 'R10,000', sub: '4× Matched Deposit Package', desc: 'Up to R10,000 across your first four deposits at Jackpot City Casino.', stars: '★★★★☆', score: '4.4/5', link: 'https://bit.ly/Jackpotcityza' })}
+        </div>
+        <p class="cmp-tc" style="margin-top:24px">T&amp;Cs apply to all bonuses. 18+ only. <a href="#about" data-page="about">How we rate bonuses →</a></p>
+      </div>
+    </section>
+    <section class="sec">
+      <div class="wrap">
+        <h2 class="sec-title" style="margin-bottom:20px">Bonus <span>FAQ</span></h2>
+        ${T.faqItems([
+          { q: 'What is a welcome bonus?', a: 'A welcome bonus is a promotional offer for new players when they register. It can be a matched deposit, free bets, free spins, or a combination.' },
+          { q: 'Do I need to deposit to claim a bonus?', a: 'Not always. Hollywoodbets and Easybet offer no-deposit bonuses on registration. Larger bonuses like Betway\'s R2,000 require a minimum deposit.' },
+          { q: 'What are wagering requirements?', a: 'Wagering requirements determine how many times you must bet your bonus before you can withdraw. A 5× requirement on R25 means placing R125 in bets first.' },
+          { q: 'Can I claim bonuses on mobile?', a: 'Yes. All SA bookmakers listed here are mobile-friendly and bonuses can be claimed via mobile browser or app.' },
+        ])}
+      </div>
+    </section>`,
+
+  reviews: () => `
+    <div class="page-hero">
+      <div class="wrap">
+        <div>
+          <div class="breadcrumb"><a href="#home" data-page="home">Home</a><span>›</span>Bookmaker Reviews</div>
+          <p class="eyebrow">⭐ Expert Reviews — April 2025</p>
+          <h1 class="page-hero-title">Best <em>Online Betting Sites</em><br>in South Africa</h1>
+          <p class="sec-desc">Independent ratings based on bonuses, odds, game selection, mobile experience and withdrawal speed.</p>
+        </div>
+      </div>
+    </div>
+    ${T.compareTable()}
+    <section class="sec">
+      <div class="wrap">
+        <h2 class="sec-title" style="margin-bottom:28px">Detailed <span>Reviews</span></h2>
+        <div style="display:flex;flex-direction:column;gap:22px">
+          ${T.reviewCard({ logo: 'https://www.bettingguide.co.za/wp-content/uploads/2021/06/Betway-300x181-2.png', logoAlt: 'Betway', score: '4.9', bonus: 'R2,000', bonusLabel: '100% Matched Deposit Bonus', dep: '25', pros: ['Largest sports betting platform in SA', 'Excellent Betway Spins slots', 'Live streaming of events', 'Fast withdrawals'], cons: ['Wagering requirements on bonus', 'Limited lucky numbers markets'], link: 'https://bit.ly/betwaygmbcode', badge: 'Best Overall' })}
+          ${T.reviewCard({ logo: 'https://www.bettingguide.co.za/wp-content/uploads/2022/02/Hollywoodbets-new-logo-2022-1.png', logoAlt: 'Hollywoodbets', score: '4.8', bonus: 'R25 Free + 50 Spina Zonke Spins', bonusLabel: 'No Deposit Welcome Bonus', dep: '10', pros: ['SA-born brand', 'Exclusive Spina Zonke platform', 'Data-free betting', 'R10 minimum deposit'], cons: ['Spina Zonke only on Hollywoodbets', 'Desktop site can feel dated'], link: 'https://bit.ly/hollyfree50gmb', badge: 'Best for Slots' })}
+          ${T.reviewCard({ logo: 'https://www.bettingguide.co.za/wp-content/uploads/2023/08/Easybet-Logo-South-Africa-online-casino.jpg', logoAlt: 'Easybet', score: '4.7', bonus: 'R50 Free', bonusLabel: 'No Deposit Sign Up Bonus', dep: '10', pros: ['R50 free — no deposit required', 'Clean simple interface', 'Quick registration', 'Growing slot library'], cons: ['Smaller sports markets', 'Limited live betting'], link: 'https://bit.ly/EasybetZA', badge: 'Best No Deposit' })}
+        </div>
+      </div>
+    </section>`,
+
+  slots: () => `
+    <div class="page-hero">
+      <div class="wrap">
+        <div>
+          <div class="breadcrumb"><a href="#home" data-page="home">Home</a><span>›</span>Online Slots</div>
+          <p class="eyebrow">🎰 Spina Zonke &amp; Online Slots SA</p>
+          <h1 class="page-hero-title">Online <em>Slots</em> &amp; Spina<br>Zonke Guide 2025</h1>
+          <p class="sec-desc">Everything about online slot games in SA — Spina Zonke, Betway Spins, Pragmatic Play, Habanero, NetEnt and more.</p>
+        </div>
+        <a class="btn btn-gold btn-lg" href="https://bit.ly/hollyfree50gmb" target="_blank" rel="noopener sponsored">Play Spina Zonke Free →</a>
+      </div>
+    </div>
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <div class="with-sidebar">
+          <div>
+            <div class="flex-b" style="margin-bottom:22px">
+              <h2 class="sec-title">Spina Zonke <span>Articles</span></h2>
+              <div class="ftabs">
+                <button class="ftab active">All</button>
+                <button class="ftab">Reviews</button>
+                <button class="ftab">Tips</button>
+              </div>
+            </div>
+            <div class="posts-grid">
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2023/04/What-is-the-Best-Time-to-Play-Online-Slots-in-South-Africa.jpg', tag: 'tip', tagLabel: 'Tip', title: 'What is the Best Time to Play Online Slots in South Africa?', date: 'April 2025', read: '8 min', page: 'slots' })}
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2023/04/Gates-of-Olympus-Slot-Scatters-South-Africa.png', tag: 'review', tagLabel: 'Review', title: 'Gates of Olympus Slot Review — Is It Worth Playing in SA?', date: 'March 2025', read: '10 min', page: 'slots' })}
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2023/02/How-To-Win-Big-Playing-Online-Slots-in-South-Africa.jpg', tag: 'tip', tagLabel: 'Tip', title: 'How to Win Big Playing Online Slots — Strategies That Work', date: 'February 2025', read: '12 min', page: 'slots' })}
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2022/11/Spina-Zonke-Demo-Hollywoodbets-South-Africa.png', tag: 'review', tagLabel: 'Review', title: 'Spina Zonke Demo — Watch and Learn How To Play Popular Slots', date: 'November 2024', read: '7 min', page: 'slots' })}
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2022/11/Gates-of-Olympus-Bonus-Buy-Pragmatic-Play-South-Africa-1.jpg', tag: 'tip', tagLabel: 'Tip', title: 'How to Buy Features on Pragmatic Play Slots — Bonus Buy Guide', date: 'October 2024', read: '6 min', page: 'slots' })}
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2022/11/Old-School-Spina-Zonke-Games.png', tag: 'review', tagLabel: 'Review', title: 'Old School Spina Zonke Games | The Classic Slots That Started It All', date: 'September 2024', read: '8 min', page: 'slots' })}
+            </div>
+          </div>
+          <aside class="sidebar">
+            <div class="widget">
+              <div class="w-head"><h3 class="w-title">🎯 Play Spina Zonke</h3></div>
+              <div class="w-body">
+                <p style="font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.6">Access Spina Zonke at Hollywoodbets — SA's #1 Spina Zonke platform. Register free and get 50 bonus spins.</p>
+                <a class="btn btn-gold btn-full" href="https://bit.ly/hollyfree50gmb" target="_blank" rel="noopener sponsored">Play Now — 50 Free Spins →</a>
+              </div>
+            </div>
+            <div class="widget">
+              <div class="w-head"><h3 class="w-title">🔢 Slot Stats</h3></div>
+              <div class="w-body" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                <div style="text-align:center;padding:10px;background:var(--navy-2);border-radius:var(--r)"><div style="font-family:var(--fh);font-size:22px;font-weight:700;color:var(--gold)">500+</div><div style="font-family:var(--fh);font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)">Games</div></div>
+                <div style="text-align:center;padding:10px;background:var(--navy-2);border-radius:var(--r)"><div style="font-family:var(--fh);font-size:22px;font-weight:700;color:var(--gold)">96%</div><div style="font-family:var(--fh);font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)">Avg RTP</div></div>
+                <div style="text-align:center;padding:10px;background:var(--navy-2);border-radius:var(--r)"><div style="font-family:var(--fh);font-size:22px;font-weight:700;color:var(--gold)">R0.10</div><div style="font-family:var(--fh);font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)">Min Bet</div></div>
+                <div style="text-align:center;padding:10px;background:var(--navy-2);border-radius:var(--r)"><div style="font-family:var(--fh);font-size:22px;font-weight:700;color:var(--gold)">10,000×</div><div style="font-family:var(--fh);font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)">Max Win</div></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section class="sec">
+      <div class="wrap">
+        <div class="article-body">
+          <h2>What is Spina Zonke?</h2>
+          <p>Spina Zonke is the term used in South Africa for online slot games, particularly on the Hollywoodbets platform. The phrase comes from Zulu and loosely translates to "spin everything" — a fitting name for SA's most popular form of online gambling entertainment.</p>
+          <div class="highlight"><p>💡 <strong>Tip:</strong> The best time to try Spina Zonke is when you have a free bet or free spins bonus — explore different games without risking your own money first.</p></div>
+          <h2>10 Spina Zonke Winning Strategies</h2>
+          <ul>
+            <li>Always check the RTP percentage before playing — aim for 96% or higher</li>
+            <li>Understand volatility: high = bigger but rarer wins; low = smaller but more frequent wins</li>
+            <li>Set a strict budget before you start and stick to it</li>
+            <li>Use free spins and bonuses to explore new games first</li>
+            <li>Try demo mode to learn each game's mechanics</li>
+            <li>Set a win limit and a loss limit before playing</li>
+            <li>Take regular breaks to stay clear-headed</li>
+            <li>Choose games with bonus features (free spins, multipliers) for bigger potential payouts</li>
+            <li>Never chase losses — if you've hit your limit, stop</li>
+          </ul>
+        </div>
+      </div>
+    </section>`,
+
+  sports: () => `
+    <div class="page-hero">
+      <div class="wrap">
+        <div>
+          <div class="breadcrumb"><a href="#home" data-page="home">Home</a><span>›</span>Sports Betting</div>
+          <p class="eyebrow">⚽ Your Complete SA Betting Hub</p>
+          <h1 class="page-hero-title">Online <em>Sports Betting</em><br>in South Africa 2025</h1>
+          <p class="sec-desc">Tips, guides and reviews for soccer, rugby, cricket, tennis and horse racing.</p>
+        </div>
+      </div>
+    </div>
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <h2 class="sec-title" style="margin-bottom:24px">Browse by <span>Sport</span></h2>
+        <div class="grid-3">
+          ${T.sportCard({ emoji: '⚽', title: 'Soccer Betting', desc: 'PSL, EPL, Champions League tips, market guides and best bookmakers for soccer.', link: '#sports', page: 'sports' })}
+          ${T.sportCard({ emoji: '🏉', title: 'Rugby Betting', desc: 'Super Rugby, Currie Cup and international Tests. Best rugby betting odds in SA.', link: '#sports', page: 'sports' })}
+          ${T.sportCard({ emoji: '🏏', title: 'Cricket Betting', desc: 'Proteas, IPL and international cricket markets explained.', link: '#sports', page: 'sports' })}
+          ${T.sportCard({ emoji: '🎾', title: 'Tennis Betting', desc: 'ATP, WTA and Grand Slam betting tips and strategies.', link: '#sports', page: 'sports' })}
+          ${T.sportCard({ emoji: '🏇', title: 'Horse Racing', desc: 'SA horse racing tips, tote betting and the Punters Challenge guide.', link: '#racing', page: 'racing' })}
+          ${T.sportCard({ emoji: '🥊', title: 'MMA &amp; Boxing', desc: 'UFC, Bellator and boxing betting with the best SA bookmakers.', link: '#sports', page: 'sports' })}
+        </div>
+      </div>
+    </section>`,
+
+  casino: () => `
+    <div class="page-hero">
+      <div class="wrap">
+        <div>
+          <div class="breadcrumb"><a href="#home" data-page="home">Home</a><span>›</span>Casino &amp; Live</div>
+          <p class="eyebrow">🃏 Casino &amp; Live Dealer Games SA</p>
+          <h1 class="page-hero-title"><em>Casino</em> &amp; Live Games<br>Guide South Africa</h1>
+          <p class="sec-desc">Reviews of the best online casino games in SA — live dealer tables, Evolution games, and more.</p>
+        </div>
+      </div>
+    </div>
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <h2 class="sec-title" style="margin-bottom:24px">Evolution <span>Live Games</span></h2>
+        <div class="info-box"><p>🃏 <strong>What are Live Casino Games?</strong> Real casino table games streamed live from a studio. Place bets on your phone in real time. Available at Betway, Hollywoodbets, YesPlay and more.</p></div>
+        <div class="grid-3">
+          ${T.casinoCard({ emoji: '⚡', name: 'Lightning Roulette', provider: 'Evolution Gaming', desc: 'European roulette with random Lightning multipliers up to 500x on straight-up bets. SA\'s most popular live game.', rtp: '97.3%', link: '#casino' })}
+          ${T.casinoCard({ emoji: '🎡', name: 'Crazy Time', provider: 'Evolution Gaming', desc: 'Iconic live money wheel with four exciting bonus games. One of the highest-paying live games available.', rtp: '96.08%', link: '#casino' })}
+          ${T.casinoCard({ emoji: '💰', name: 'Mega Ball 100×', provider: 'Evolution Gaming', desc: 'Lottery-style live game where multipliers can reach 100x on winning cards.', rtp: '95.4%', link: '#casino' })}
+          ${T.casinoCard({ emoji: '🃏', name: 'Lightning Blackjack', provider: 'Evolution Gaming', desc: 'Classic blackjack with Lightning multipliers on natural blackjacks — up to 2500x.', rtp: '99.56%', link: '#casino' })}
+          ${T.casinoCard({ emoji: '🎩', name: 'Monopoly Live', provider: 'Evolution Gaming', desc: 'Live money wheel with 3D Monopoly bonus round. Huge multiplier potential in the bonus game.', rtp: '96.23%', link: '#casino' })}
+          ${T.casinoCard({ emoji: '🎲', name: 'Lightning Dice', provider: 'Evolution Gaming', desc: 'Three dice game with Lightning multipliers. Simple to learn with multiplied wins on specific numbers.', rtp: '96.1%', link: '#casino' })}
+        </div>
+      </div>
+    </section>`,
+
+  lucky: () => `
+    <div class="page-hero">
+      <div class="wrap">
+        <div>
+          <div class="breadcrumb"><a href="#home" data-page="home">Home</a><span>›</span>Lucky Numbers</div>
+          <p class="eyebrow">🍀 Lotteries &amp; Lucky Numbers SA</p>
+          <h1 class="page-hero-title"><em>Lucky Numbers</em> &amp; Lotto<br>Guide South Africa</h1>
+          <p class="sec-desc">Lucky numbers, Fafi, Daily Lotto, Powerball, UK 49's and international lotteries. Results, guides and predictions.</p>
+        </div>
+      </div>
+    </div>
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <p class="eyebrow">🎯 Today's Draws</p>
+        <h2 class="sec-title" style="margin-bottom:24px">Latest <span>Draw Results</span></h2>
+        <div class="grid-3">
+          ${T.drawCard({ name: 'SA Daily Lotto', time: 'Today at 21:00', balls: [7,13,22,31,44], bonus: null, desc: '5 from 36 numbers. R2 per board. Daily drawings. Available at all SA bookmakers.' })}
+          ${T.drawCard({ name: 'SA Powerball', time: 'Tuesday &amp; Friday at 21:00', balls: [3,15,29,38,49], bonus: 12, desc: '5 from 50 numbers + Powerball from 20. R5 per board. Jackpots roll over until won.' })}
+          ${T.drawCard({ name: "UK 49's (Teatime)", time: 'Today at 17:49', balls: [2,11,18,24,36,41], bonus: 7, desc: '6 from 49 + booster. Popular in SA. Available at Hollywoodbets, Betway and more.' })}
+          ${T.drawCard({ name: 'Greece Powerball', time: 'Today at 21:30', balls: [4,19,27,33,42], bonus: 6, desc: '5 from 45 numbers + Powerball from 20. Popular Greek lottery available at SA bookmakers.' })}
+          ${T.drawCard({ name: 'Russia Gosloto 6/45', time: 'Multiple draws daily', balls: [8,16,24,31,40,45], bonus: null, desc: '6 from 45 numbers. Multiple daily draws with good frequency for SA players.' })}
+          ${T.drawCard({ name: 'USA Mega Millions', time: 'Tuesday &amp; Friday', balls: [5,20,32,48,63], bonus: 15, desc: '5 from 70 + Mega Ball from 25. Massive international jackpots. Play online in SA.' })}
+        </div>
+        <p style="font-size:12px;color:var(--dim);margin-top:14px;text-align:center">⚠ Example numbers shown for illustration only. Always verify at your bookmaker. T&amp;Cs apply.</p>
+      </div>
+    </section>
+    <section class="sec">
+      <div class="wrap">
+        <div class="with-sidebar">
+          <div>
+            <h2 class="sec-title" style="margin-bottom:22px">Lucky Numbers <span>Guides</span></h2>
+            <div class="posts-grid">
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2021/07/betting-guide-footer-lucky-numbers-and-lotto-icon.png', tag: 'tip', tagLabel: 'Guide', title: 'Lucky Numbers &amp; Fafi Dream Guide — Every Number Explained', date: 'April 2025', read: '15 min', page: 'lucky' })}
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2021/07/betting-guide-footer-lucky-numbers-and-lotto-icon.png', tag: 'tip', tagLabel: 'Tip', title: 'How to Make Lucky Numbers Predictions — Expert Strategies', date: 'March 2025', read: '8 min', page: 'lucky' })}
+              ${T.postCard({ img: 'https://www.bettingguide.co.za/wp-content/uploads/2022/02/Hollywoodbets-new-logo-2022-1.png', tag: 'review', tagLabel: 'Review', title: 'Hollywoodbets Dream Guide — Every Number &amp; Its Meaning', date: 'February 2025', read: '20 min', page: 'lucky' })}
+            </div>
+          </div>
+          <aside class="sidebar">
+            <div class="widget">
+              <div class="w-head"><h3 class="w-title">🎯 Lucky Numbers Generator</h3></div>
+              <div class="w-body">
+                <p style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6">Generate random lucky numbers. For entertainment only.</p>
+                <div id="lucky-gen" style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px" aria-live="polite"></div>
+                <button class="btn btn-gold btn-full" id="gen-btn">🎲 Generate Lucky Numbers</button>
+                <p style="font-size:10px;color:var(--dim);margin-top:8px;text-align:center">For entertainment only. Results are always random.</p>
+              </div>
+            </div>
+            <div class="widget">
+              <div class="w-head"><h3 class="w-title">📅 Draw Schedule</h3></div>
+              <div class="w-body">
+                <div class="w-link-list">
+                  <div class="w-link" style="color:var(--text)">SA Daily Lotto — <span style="color:var(--gold)">Daily 21:00</span></div>
+                  <div class="w-link" style="color:var(--text)">SA Powerball — <span style="color:var(--gold)">Tue &amp; Fri 21:00</span></div>
+                  <div class="w-link" style="color:var(--text)">UK 49's Lunchtime — <span style="color:var(--gold)">Daily 13:49</span></div>
+                  <div class="w-link" style="color:var(--text)">UK 49's Teatime — <span style="color:var(--gold)">Daily 17:49</span></div>
+                  <div class="w-link" style="color:var(--text)">Greece Powerball — <span style="color:var(--gold)">Daily 21:30</span></div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>`,
+
+  apps: () => `
+    <div class="page-hero">
+      <div class="wrap">
+        <div>
+          <div class="breadcrumb"><a href="#home" data-page="home">Home</a><span>›</span>Betting Apps</div>
+          <p class="eyebrow">📱 Download &amp; Bet Data-Free</p>
+          <h1 class="page-hero-title">Best <em>Betting Apps</em><br>South Africa 2025</h1>
+          <p class="sec-desc">Compare and download the best SA betting apps. Many offer data-free browsing.</p>
+        </div>
+      </div>
+    </div>
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <div class="grid-2">
+          ${T.appCard({ icon: '🎰', name: 'Hollywoodbets App', developer: 'Hollywoodbets', rating: '4.8', android: true, ios: true, dataFree: true, features: ['Spina Zonke Slots', 'Lucky Numbers', 'Live Betting', 'Data Free'], desc: "SA's favourite betting app. Spina Zonke slots, sports, lucky numbers and live casino — all in one. The data-free option is a game changer.", link: 'https://hollywoodmedia.hollywoodbets.net/downloads/hollywoodbets-1-0.apk' })}
+          ${T.appCard({ icon: '⚽', name: 'Betway SA App', developer: 'Betway Sports', rating: '4.7', android: true, ios: true, dataFree: true, features: ['Betway Spins Slots', 'Sports Betting', 'Live Streaming', 'Live Casino'], desc: 'Fully-featured mobile app with excellent sports markets and Betway Spins slots. Data-free on selected SA networks.', link: 'https://bit.ly/BWDataFreeApp' })}
+          ${T.appCard({ icon: '🎁', name: 'Easybet App', developer: 'Easybet', rating: '4.5', android: true, ios: false, dataFree: false, features: ['R50 Free on Install', 'Slot Games', 'Sports Betting', 'Quick Signup'], desc: 'Simple fast app for SA players. Claim R50 free on registration and enjoy sports and slots with a clean interface.', link: '#' })}
+          ${T.appCard({ icon: '🏆', name: 'Gbets App', developer: 'Gbets', rating: '4.3', android: true, ios: false, dataFree: false, features: ['Soccer Betting', 'Casino Games', 'Live Betting', 'Lucky Numbers'], desc: 'Solid Android app with good PSL soccer odds and decent slot selection. Download directly from their website.', link: 'https://gblog.co.za/wp-content/uploads/2022/03/Gbets-1.apk' })}
+        </div>
+      </div>
+    </section>`,
+
+  promos: () => `
+    <div class="page-hero">
+      <div class="wrap">
+        <div>
+          <div class="breadcrumb"><a href="#home" data-page="home">Home</a><span>›</span>Promotions</div>
+          <p class="eyebrow">🔥 April 2025 — Updated Weekly</p>
+          <h1 class="page-hero-title">Latest <em>Promotions</em><br>&amp; Free Bet Offers</h1>
+          <p class="sec-desc">Current promotions, reload bonuses and free bets from all major SA bookmakers.</p>
+        </div>
+      </div>
+    </div>
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <div class="promo-scroll">
+          ${T.promoCard({ book: 'Betway', amount: 'R2,000', name: 'First Deposit Bonus', desc: '100% matched deposit on your first bet. Sports and slots eligible.', expiry: '30 Apr 2025', link: 'https://bit.ly/betwaygmbcode' })}
+          ${T.promoCard({ book: 'Hollywoodbets', amount: '50 Spins', name: 'Spina Zonke Free Spins', desc: '50 free spins on selected Spina Zonke slots on registration.', expiry: 'Ongoing', link: 'https://bit.ly/hollyfree50gmb' })}
+          ${T.promoCard({ book: 'Easybet', amount: 'R50', name: 'No Deposit Bonus', desc: 'Get R50 free when you sign up — no deposit required.', expiry: 'Ongoing', link: 'https://bit.ly/EasybetZA' })}
+          ${T.promoCard({ book: 'Lulabet', amount: 'R250', name: 'Welcome Free Bet', desc: 'R250 sports free bet OR 100 free spins — your choice.', expiry: '31 May 2025', link: 'https://bit.ly/BGLulabetReg' })}
+          ${T.promoCard({ book: 'Jackpot City', amount: 'R10,000', name: '4× Deposit Package', desc: 'Up to R10,000 across your first four deposits.', expiry: 'Ongoing', link: 'https://bit.ly/Jackpotcityza' })}
+        </div>
+      </div>
+    </section>`,
+
+  racing: () => `
+    <div class="page-hero">
+      <div class="wrap">
+        <div>
+          <div class="breadcrumb"><a href="#home" data-page="home">Home</a><span>›</span>Horse Racing</div>
+          <p class="eyebrow">🏇 SA Horse Racing Betting Hub</p>
+          <h1 class="page-hero-title">Horse <em>Racing Betting</em><br>South Africa 2025</h1>
+          <p class="sec-desc">Complete guide to horse racing in SA — tote betting, race cards, the Punters Challenge and more.</p>
+        </div>
+      </div>
+    </div>
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <div class="article-body">
+          <h2>Horse Racing in South Africa</h2>
+          <p>South Africa has a rich horse racing tradition. Major venues include Greyville (Durban), Kenilworth (Cape Town), Turffontein (Johannesburg) and Fairview (Port Elizabeth). You can bet on SA and international races at multiple bookmakers.</p>
+          <h2>How to Place a Tote Bet on Hollywoodbets</h2>
+          <div class="steps">
+            <div class="step"><div class="step-num"></div><div class="step-content"><h4>Log in to Hollywoodbets</h4><p>Go to the Hollywoodbets app and navigate to the Racing section.</p></div></div>
+            <div class="step"><div class="step-num"></div><div class="step-content"><h4>Select Your Race and Bet Type</h4><p>Choose from Win, Place, Each-Way, Exacta, Trifecta or Quartet pools.</p></div></div>
+            <div class="step"><div class="step-num"></div><div class="step-content"><h4>Pick Your Horse(s)</h4><p>Select the horse(s) you want to back. For exotic bets, select the correct finishing order.</p></div></div>
+            <div class="step"><div class="step-num"></div><div class="step-content"><h4>Enter Stake and Confirm</h4><p>Enter your stake, review your bet slip and confirm. Your bet is placed instantly.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>`,
+
+  about: () => `
+    <div class="page-hero">
+      <div class="wrap">
+        <div>
+          <div class="breadcrumb"><a href="#home" data-page="home">Home</a><span>›</span>About Us</div>
+          <p class="eyebrow">ℹ Who We Are</p>
+          <h1 class="page-hero-title">About <em>Betting Guide SA</em></h1>
+          <p class="sec-desc">South Africa's most trusted independent betting resource since 2019.</p>
+        </div>
+      </div>
+    </div>
+    <section class="sec sec-alt">
+      <div class="wrap">
+        <div class="grid-4" style="margin-bottom:48px">
+          <div class="stat-card"><div class="stat-num">100k+</div><div class="stat-label">Monthly Readers</div></div>
+          <div class="stat-card"><div class="stat-num">500+</div><div class="stat-label">Articles</div></div>
+          <div class="stat-card"><div class="stat-num">11</div><div class="stat-label">Bookmakers</div></div>
+          <div class="stat-card"><div class="stat-num">6yr</div><div class="stat-label">In Operation</div></div>
+        </div>
+        <div class="article-body">
+          <h2>Our Mission</h2>
+          <p>Betting Guide SA is South Africa's #1 independent betting resource. Our mission is to help SA bettors make better, more informed decisions about where to bet and how to bet safely.</p>
+          <p>We are not owned by or affiliated with any bookmaker. All reviews and ratings are conducted independently.</p>
+          <h2>Responsible Gambling</h2>
+          <p>Gambling should be entertainment, never a way to make money. If gambling is affecting your life, please reach out:</p>
+          <ul>
+            <li><strong>National Responsible Gambling Programme:</strong> 0800 006 008 (24/7 free helpline)</li>
+            <li><strong>Website:</strong> <a href="http://www.responsiblegambling.co.za/" target="_blank" rel="noopener">www.responsiblegambling.co.za</a></li>
+          </ul>
+          <div class="info-box"><p>⚠ <strong>Important:</strong> All content on Betting Guide SA is for informational and entertainment purposes only. 18+ only. Please gamble responsibly.</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="sec">
+      <div class="wrap">
+        <h2 class="sec-title" style="margin-bottom:28px">Meet Our <span>Experts</span></h2>
+        <div class="grid-3">
+          <div class="team-card"><div class="team-avatar">👨‍💼</div><div class="team-name">Thabo M.</div><div class="team-role">Editor in Chief</div><p class="team-bio">10 years in SA sports journalism. Specialises in soccer and rugby betting.</p></div>
+          <div class="team-card"><div class="team-avatar">👩‍🔬</div><div class="team-name">Lerato K.</div><div class="team-role">Casino &amp; Slots Analyst</div><p class="team-bio">Certified iGaming professional. 8 years reviewing online casino games across African markets.</p></div>
+          <div class="team-card"><div class="team-avatar">👨‍💻</div><div class="team-name">Sipho D.</div><div class="team-role">RG Advocate</div><p class="team-bio">Former NGB researcher. Ensures all content meets responsible gambling standards.</p></div>
+        </div>
+      </div>
+    </section>`,
+};
+
+/* ════════════════════════════════════════════════════════════
+   HASH ROUTER
+════════════════════════════════════════════════════════════ */
+const content = $('#page-content');
+
+function getPage() {
+  const hash = location.hash.replace('#', '') || 'home';
+  return PAGES[hash] ? hash : 'home';
+}
+
+function render(page) {
+  // Trigger page-in animation by replacing the node
+  const newMain = document.createElement('main');
+  newMain.id = 'page-content';
+  newMain.tabIndex = -1;
+  newMain.style.animation = 'pageIn .35s ease both';
+  newMain.innerHTML = PAGES[page]();
+  content.replaceWith(newMain);
+
+  // Update active nav links
+  $$('[data-page]').forEach(el => {
+    el.classList.toggle('active', el.dataset.page === page);
+    if (el.classList.contains('oc-link')) {
+      el.classList.toggle('active', el.dataset.page === page);
     }
+  });
 
-    /* Apply a background color and set text color for the body */
-    body {
-      background-color: #f4f4f4;
-      color: #333;
-      font-family: Arial, sans-serif;
-    }
+  bindPageLinks(newMain);
+  initPage(page, newMain);
 
-    /* Style the header with flexbox for navigation alignment */
-    #header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #24292e;
-      padding: 20px;
-    }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    /* Style the logo image */
-    #header-img {
-      width: 100px;
-      height: auto;
-    }
+  const titles = { home: 'Home', bonuses: 'Best Bonuses', reviews: 'Bookmaker Reviews', slots: 'Online Slots', sports: 'Sports Betting', casino: 'Casino & Live', lucky: 'Lucky Numbers', apps: 'Betting Apps', promos: 'Promotions', racing: 'Horse Racing', about: 'About Us' };
+  document.title = `${titles[page] || 'Page'} | Betting Guide SA`;
 
-    /* Style the navigation links */
-    .nav-link {
-      text-decoration: none;
-      color: #fff;
-      margin-right: 20px;
-    }
+  // Observe newly rendered cards for scroll reveal
+  observeRevealElements(newMain);
+}
 
-    /* Style sections with padding and background color */
-    section {
-      padding: 40px;
-      background-color: #fff;
-    }
-
-    /* Style the form elements */
-    form {
-      margin-top: 20px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-    }
-
-    input[type="submit"] {
-      background-color: #24292e;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* Make the #nav-bar fixed at the top */
-    #nav-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #24292e;
-      padding: 10px 0;
-    }
-
-    /* Media query for responsiveness */
-    @media (max-width: 768px) {
-      /* Adjust header styles for smaller screens */
-      #header {
-        flex-direction: column;
-        align-items: flex-start;
+// Use event delegation on document instead of binding to every link individually
+// This avoids memory leaks and the _bound flag anti-pattern
+let delegateReady = false;
+function setupDelegation() {
+  if (delegateReady) return;
+  delegateReady = true;
+  on(document, 'click', e => {
+    const link = e.target.closest('[data-page]');
+    if (!link) return;
+    const page = link.dataset.page;
+    if (page && PAGES[page]) {
+      e.preventDefault();
+      if (location.hash.replace('#', '') !== page) {
+        location.hash = page;
+      } else {
+        render(page); // same page: re-render
       }
-
-      /* Adjust header image size */
-      #header-img {
-        width: 80px;
-      }
-
-      /* Center-align navigation links */
-      #nav-bar {
-        text-align: center;
-        margin-top: 10px;
-      }
-
-      /* Add padding to sections for better readability */
-      section {
-        padding: 20px;
-      }
+      closeMenu();
     }
-  </style>
+  });
+}
 
-</body></html>
+function bindPageLinks(ctx = document) {
+  // No per-element listeners needed — handled by delegation above
+  // This just ensures the subnav & footer links are wired (they are static)
+}
 
-    
+function initPage(page, ctx) {
+  // FAQ accordion — use aria-expanded for accessibility
+  $$('.faq-q', ctx).forEach(btn => {
+    on(btn, 'click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      const answer = btn.nextElementSibling;
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      answer.hidden = isOpen;
+      answer.classList.toggle('open', !isOpen);
+    });
+  });
+
+  // Filter tabs
+  $$('.ftab', ctx).forEach(tab => {
+    on(tab, 'click', () => {
+      $$('.ftab', ctx).forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+    });
+  });
+
+  // Quick chips
+  $$('.qchip', ctx).forEach(chip => {
+    on(chip, 'click', () => {
+      $$('.qchip', ctx).forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+
+  // Lucky numbers generator
+  if (page === 'lucky') {
+    const genNumbers = () => {
+      const el = $('#lucky-gen', ctx);
+      if (!el) return;
+      const nums = new Set();
+      while (nums.size < 6) nums.add(Math.floor(Math.random() * 49) + 1);
+      el.innerHTML = [...nums].sort((a, b) => a - b).map(n => `<div class="ball">${n}</div>`).join('') +
+        `<div class="ball bonus">${Math.floor(Math.random() * 20) + 1}</div>`;
+    };
+    genNumbers();
+    const btn = $('#gen-btn', ctx);
+    if (btn) on(btn, 'click', genNumbers);
+  }
+}
+
+on(window, 'hashchange', () => render(getPage()));
+on(document, 'DOMContentLoaded', () => {
+  setupDelegation();
+  render(getPage());
+
+  // Duplicate ticker items for seamless scroll (DRY — done once in JS)
+  const track = $('#ticker-track');
+  if (track) {
+    const clone = track.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    $$('a', clone).forEach(a => { a.tabIndex = -1; });
+    track.parentNode.appendChild(clone);
+    // Merge both into one track element for animation
+    while (clone.firstChild) track.appendChild(clone.firstChild);
+    clone.remove();
+  }
+});
+
+/* ════════════════════════════════════════════════════════════
+   SCROLL & INTERSECTION OBSERVER
+════════════════════════════════════════════════════════════ */
+
+// Reading progress uses CSS variable to avoid forced reflow on every frame
+let ticking = false;
+on(window, 'scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    const d = document.documentElement;
+    const pct = Math.min((window.scrollY / (d.scrollHeight - window.innerHeight)) * 100, 100);
+    document.documentElement.style.setProperty('--progress', pct + '%');
+    $('#site-header')?.classList.toggle('stuck', window.scrollY > 60);
+    ticking = false;
+  });
+}, { passive: true });
+
+// Scroll reveal — single persistent observer, no timeout race
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target); // stop observing once revealed
+    }
+  });
+}, { rootMargin: '0px 0px -40px 0px' });
+
+function observeRevealElements(ctx) {
+  $$('.offer-card, .pc, .promo-card, .review-card, .app-card, .draw-card, .sport-card, .stat-card, .team-card', ctx)
+    .forEach(el => { el.classList.add('reveal'); revealObserver.observe(el); });
+}
+
+/* ════════════════════════════════════════════════════════════
+   UI — SEARCH OVERLAY
+════════════════════════════════════════════════════════════ */
+const sOverlay = $('#s-overlay');
+const sInput = $('#s-input');
+
+function openSearch() {
+  sOverlay.classList.add('on');
+  document.body.classList.add('no-scroll');
+  setTimeout(() => sInput?.focus(), 80);
+}
+function closeSearch() {
+  sOverlay.classList.remove('on');
+  document.body.classList.remove('no-scroll');
+}
+
+on($('#s-btn'), 'click', openSearch);
+on($('#s-close'), 'click', closeSearch);
+on(sOverlay, 'click', e => { if (e.target === sOverlay) closeSearch(); });
+on(document, 'keydown', e => {
+  if (e.key === 'Escape') { closeSearch(); closeSideMenu(); closeDropdowns(); }
+});
+
+$$('.s-chip').forEach(c => on(c, 'click', () => {
+  if (sInput) { sInput.value = c.textContent.trim(); sInput.focus(); }
+}));
+
+/* ════════════════════════════════════════════════════════════
+   UI — DESKTOP DROPDOWNS (hover + keyboard)
+════════════════════════════════════════════════════════════ */
+function closeDropdowns() {
+  $$('[data-dropdown]').forEach(item => {
+    item.classList.remove('open');
+    item.querySelector('[aria-haspopup]')?.setAttribute('aria-expanded', 'false');
+  });
+}
+
+$$('[data-dropdown]').forEach(item => {
+  const toggle = item.querySelector('[aria-haspopup]');
+  on(item, 'mouseenter', () => { item.classList.add('open'); toggle?.setAttribute('aria-expanded', 'true'); });
+  on(item, 'mouseleave', () => { item.classList.remove('open'); toggle?.setAttribute('aria-expanded', 'false'); });
+  on(toggle, 'click', () => {
+    const isOpen = item.classList.contains('open');
+    closeDropdowns();
+    if (!isOpen) { item.classList.add('open'); toggle.setAttribute('aria-expanded', 'true'); }
+  });
+});
+
+on(document, 'click', e => {
+  if (!e.target.closest('[data-dropdown]')) closeDropdowns();
+});
+
+/* ════════════════════════════════════════════════════════════
+   UI — OFF-CANVAS MENU
+════════════════════════════════════════════════════════════ */
+const offcanvas = $('#offcanvas');
+const backdrop  = $('#backdrop');
+const hamBtn    = $('#ham-btn');
+
+function openMenu() {
+  offcanvas?.classList.add('on');
+  backdrop?.classList.add('on');
+  hamBtn?.classList.add('on');
+  hamBtn?.setAttribute('aria-expanded', 'true');
+  document.body.classList.add('no-scroll');
+}
+function closeSideMenu() {
+  offcanvas?.classList.remove('on');
+  backdrop?.classList.remove('on');
+  hamBtn?.classList.remove('on');
+  hamBtn?.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('no-scroll');
+}
+function closeMenu() { closeSideMenu(); }
+
+on(hamBtn, 'click', openMenu);
+on($('#oc-close'), 'click', closeSideMenu);
+on(backdrop, 'click', closeSideMenu);
+
+// Off-canvas accordion
+$$('[data-acc]').forEach(btn => {
+  on(btn, 'click', () => {
+    const item = btn.closest('.oc-item');
+    const wasOpen = item.classList.contains('open');
+    $$('.oc-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('[data-acc]')?.setAttribute('aria-expanded', 'false');
+    });
+    if (!wasOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+  });
+});
+
+/* ════════════════════════════════════════════════════════════
+   UI — COOKIE CONSENT (persisted in localStorage)
+════════════════════════════════════════════════════════════ */
+function dismissCookie() {
+  const c = $('#cookie');
+  c?.classList.remove('show');
+  setTimeout(() => c?.remove(), 400);
+  try { localStorage.setItem('cookie_consent', '1'); } catch {}
+}
+
+on($('#ck-yes'), 'click', dismissCookie);
+on($('#ck-no'), 'click', dismissCookie);
+
+// Only show if not already answered
+try {
+  if (!localStorage.getItem('cookie_consent')) {
+    setTimeout(() => $('#cookie')?.classList.add('show'), 2000);
+  } else {
+    $('#cookie')?.remove();
+  }
+} catch {
+  setTimeout(() => $('#cookie')?.classList.add('show'), 2000);
+}
+
+/* ════════════════════════════════════════════════════════════
+   UI — AGE BANNER (persisted)
+════════════════════════════════════════════════════════════ */
+on($('#age-close'), 'click', () => {
+  $('#age-bar')?.remove();
+  try { sessionStorage.setItem('age_bar', '1'); } catch {}
+});
+try {
+  if (sessionStorage.getItem('age_bar')) $('#age-bar')?.remove();
+} catch {}
+
+/* ════════════════════════════════════════════════════════════
+   UI — MISC
+════════════════════════════════════════════════════════════ */
+// Mobile CTA dismiss
+on($('#mob-x'), 'click', () => {
+  $('#mob-cta')?.remove();
+  document.body.style.paddingBottom = '0';
+});
+
+// Back to top
+on($('#back-top'), 'click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Footer year
+const yrEl = $('#yr');
+if (yrEl) yrEl.textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
